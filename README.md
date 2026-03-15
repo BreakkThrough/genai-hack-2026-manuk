@@ -13,7 +13,7 @@ Automatically extract hole-related annotations (thread callouts, tolerances, fit
 - [Validation](#validation)
 - [Dataset](#dataset)
 - [Project Structure](#project-structure)
-- [Performance](#performance)
+- [Future Plans / Improvements](#future-plans--improvements)
 - [Dependencies & Licenses](#dependencies--licenses)
 - [Ethics & Compliance](#ethics--compliance)
 
@@ -24,7 +24,13 @@ Automatically extract hole-related annotations (thread callouts, tolerances, fit
 The solution uses a **four-layer hybrid pipeline** combining traditional document intelligence, vision-language models, geometric parsing, and deterministic+LLM correlation:
 
 1. **OCR Layer** — Azure Document Intelligence extracts raw text with bounding boxes from each PDF page, providing a structured spatial map of all text elements.
-2. **Vision-AI Layer** — GPT-4o processes high-resolution page images alongside the OCR context to identify and classify hole-related annotations (diameter callouts, thread specs, counterbore stacks, GD&T). A two-pass strategy (extraction + verification) ensures high recall.
+2. **Vision-AI Layer** — GPT-4o processes high-resolution page images through a **multi-pass extraction strategy** that maximises recall without sacrificing precision:
+   - **OCR regex pre-scan** detects all diameter callouts (`∅D`, `NX ∅D`, `M...`) from OCR text, creating a checklist injected into every LLM prompt.
+   - **Per-page extraction** sends each page image + OCR context + diameter hints to GPT-4o.
+   - **Verification pass** re-examines all pages and flags any OCR-detected diameters not yet accounted for.
+   - **Cropped-region pass** uses DI bounding boxes to crop dense annotation clusters and re-processes them at higher effective resolution, catching small callouts missed in full-page images.
+   - **OCR-vs-LLM reconciliation** cross-references OCR-detected diameters against LLM output and triggers targeted follow-up queries for any remaining gaps.
+   - **Multi-stage deduplication** (within-page, cross-page, and diameter-based) removes duplicates introduced by the multi-pass approach while preserving genuinely distinct callouts.
 3. **3D Geometry Layer** — A pure-Python STEP parser (no CAD kernel required) resolves the ISO 10303-21 entity reference chain (`CYLINDRICAL_SURFACE → AXIS2_PLACEMENT_3D → CARTESIAN_POINT + DIRECTION`) to extract every cylindrical surface's radius, depth, axis, and centre, then groups co-axial cylinders into logical holes.
 4. **Correlation Layer** — A hybrid matcher uses deterministic rules (diameter matching, count filtering, counterbore pairing) for unambiguous cases, then invokes LLM disambiguation only when multiple candidates remain. Each mapping includes a confidence score and evidence trace.
 
@@ -35,10 +41,14 @@ The pipeline is designed to **fail gracefully**: if Azure DI is unavailable it f
 ## Architecture
 
 ```
-PDF Drawing ──► Azure DI Layout ──► Vision Model ──► Matcher ──► Structured JSON
-                (OCR + bbox)        (GPT-4o)           ▲          (with evidence)
-                                                       │
-STEP File   ──► STEP Text Parser ──────────────────────┘
+PDF Drawing ──► Azure DI Layout ──► OCR Regex ──► GPT-4o Multi-Pass ──► Matcher ──► Structured JSON
+                (OCR + bbox)        Pre-Scan       ├ Per-page extract     ▲          (with evidence)
+                                       │           ├ Verification pass    │
+                                       │           ├ Cropped-region pass  │
+                                       │           ├ OCR reconciliation   │
+                                       └──hints──► └ Multi-stage dedup    │
+                                                                          │
+STEP File   ──► STEP Text Parser ─────────────────────────────────────────┘
                 (cylinders, axes,
                  co-axial grouping)
 ```
@@ -48,7 +58,8 @@ STEP File   ──► STEP Text Parser ─────────────�
 | Layer | Module | Input | Output |
 |-------|--------|-------|--------|
 | 1. OCR | `app/extraction/di_extractor.py` | PDF file | Text elements with bounding boxes |
-| 2. Vision | `app/extraction/vision_enricher.py` | Page images + OCR context | Structured `HoleAnnotation` objects |
+| 2. Vision | `app/extraction/vision_enricher.py` | Page images + OCR context + DI bboxes | Structured `HoleAnnotation` objects |
+| 2a. Cropping | `app/utils/pdf_utils.py` | DI bboxes + page images | Cropped annotation-region images |
 | 3. STEP | `app/extraction/step_parser.py` | STEP file | Grouped `HoleFeature3D` objects |
 | 4. Correlation | `app/correlation/matcher.py` | Annotations + 3D features | `LinkageResult` with mappings |
 
@@ -58,7 +69,7 @@ STEP File   ──► STEP Text Parser ─────────────�
 
 ### Vision Model Prompts
 
-The system uses carefully structured prompts to ensure consistent, high-quality extraction:
+The system uses carefully structured prompts with GPT-4o to ensure consistent, high-quality extraction:
 
 1. **System Prompt** — Defines the model's role as a mechanical engineer, provides a strict JSON schema, and lists critical rules:
    - Only extract cylindrical holes (not linear dimensions, surface tolerances, slots, spherical diameters, fillets, or radii)
@@ -66,15 +77,20 @@ The system uses carefully structured prompts to ensure consistent, high-quality 
    - Counterbored holes must be extracted as a single object with both diameters
    - Distinct callouts with different GD&T must never be merged
 
-2. **Per-Page User Prompt** — Includes a checklist of annotation patterns to scan for (NX∅D, ∅D THRU, thread callouts, counterbore stacks, fit designations), along with the OCR context from Layer 1 and the page image.
+2. **Per-Page User Prompt** — Includes a checklist of annotation patterns to scan for (NX∅D, ∅D THRU, thread callouts, counterbore stacks, fit designations), along with the OCR context from Layer 1, the page image, and OCR-detected diameter hints from the regex pre-scan.
 
-3. **Verification Pass** — A second sweep asks the model to review all pages for any missed annotations, comparing against the already-found list. This catches holes visible only in section/detail views.
+3. **Verification Pass** — A second sweep asks the model to review all pages for any missed annotations, comparing against the already-found list and highlighting any OCR-detected diameters not yet accounted for. This catches holes visible only in section/detail views.
+
+4. **Cropped-Region Pass** — Dense annotation clusters identified from DI bounding boxes are cropped with padding and sent individually to GPT-4o. This gives the model a zoomed-in view of small callouts that are often missed in full-page images, improving recall by 10-20%.
+
+5. **OCR Reconciliation Pass** — Any diameters detected by the OCR regex pre-scan but still missing from the LLM output trigger a targeted follow-up query, asking the model to specifically locate those callouts across all pages.
 
 ### Consistency Mechanisms
 
-- **Deterministic post-filters** remove null diameters, implausibly small values, spherical annotations, linear dimensions misidentified as holes, and near-exact duplicates within pages.
+- **OCR regex pre-detection** scans Azure DI text for diameter patterns (`∅D`, `NX ∅D`, `M...x`) before any LLM call, creating a ground-truth checklist that is injected into every prompt to prevent missed detections.
+- **Multi-stage deduplication** removes duplicates introduced by the multi-pass approach: within-page dedup (exact key matching), cross-page dedup (same diameter + datum refs or same page + count), and diameter-based dedup (collapses identical `(diameter, count, datums)` triples).
+- **Deterministic post-filters** remove null diameters, implausibly small values, spherical annotations, linear dimensions misidentified as holes, and slot/width features.
 - **Sequential ID reassignment** after filtering ensures globally unique, predictable annotation IDs (H1, H2, ...).
-- **Model-aware API routing** handles differences between GPT-series and o-series models (temperature vs. max_completion_tokens, system role vs. merged user prompt).
 - **Structured Pydantic schemas** validate all data at every pipeline boundary.
 
 ### LLM Disambiguation in Correlation
@@ -89,7 +105,7 @@ When deterministic matching produces more candidates than the annotation's count
 
 - **Python 3.10+**
 - **Azure Document Intelligence** resource (for OCR extraction)
-- **Azure OpenAI** resource with a GPT-4o deployment (and optionally o4-mini)
+- **Azure OpenAI** resource with a **GPT-4o** deployment
 
 ### Installation
 
@@ -128,7 +144,7 @@ Required environment variables in `.env`:
 | `AZURE_DI_KEY` | Azure Document Intelligence API key |
 | `AZURE_OPENAI_ENDPOINT` | Azure OpenAI endpoint URL |
 | `AZURE_OPENAI_KEY` | Azure OpenAI API key |
-| `AZURE_OPENAI_DEPLOYMENT` | Model deployment name (default: `gpt-4o`) |
+| `AZURE_OPENAI_DEPLOYMENT` | GPT-4o deployment name (default: `gpt-4o`) |
 | `AZURE_OPENAI_API_VERSION` | API version (default: `2024-12-01-preview`) |
 
 ---
@@ -147,10 +163,7 @@ python run.py --pdf dataset/nist_ftc_06_asme1_rd.pdf --step dataset/nist_ftc_06_
 # Metric units
 python run.py --pdf dataset/nist_ftc_10_asme1_rb.pdf --step dataset/nist_ftc_10_asme1_rb.stp --unit mm
 
-# Use o4-mini model
-python run.py --pdf drawing.pdf --step model.stp --model o4-mini
-
-# Vision-only mode (skip Azure DI)
+# Vision-only mode (skip Azure DI — disables cropped-region pass)
 python run.py --pdf drawing.pdf --step model.stp --no-di
 
 # Skip LLM disambiguation (deterministic-only correlation)
@@ -164,9 +177,8 @@ python run.py --pdf drawing.pdf --step model.stp --no-llm
 | `--pdf` | (required) | Path to engineering drawing PDF |
 | `--step` | (required) | Path to STEP (.stp/.step) file |
 | `--unit` | `inch` | Drawing units: `inch` or `mm` |
-| `--model` | `gpt-4o` | Azure OpenAI deployment name |
 | `--output` / `-o` | `linkage_result.json` | Output JSON file path |
-| `--no-di` | false | Skip Azure Document Intelligence |
+| `--no-di` | false | Skip Azure Document Intelligence (also disables cropped-region pass) |
 | `--no-llm` | false | Skip LLM disambiguation |
 
 ### Option 2: Streamlit Web App
@@ -325,23 +337,11 @@ manuk/
 ```
 
 ---
-
-## Performance
-
-Validated on NIST FTC test cases with the following average results:
-
-| Model   | Avg Precision | Avg Recall | Avg F1 |
-|---------|---------------|------------|--------|
-| GPT-4o  | 93.3%         | 88.9%      | 90.6%  |
-| o4-mini | 90.2%         | 72.8%      | 79.5%  |
-
-GPT-4o is recommended as the default model for best accuracy and speed.
-
 ### Runtime
 
 Typical end-to-end runtime per drawing (single PDF + STEP):
-- **GPT-4o**: 15–45 seconds (depending on page count and annotation density)
-- **o4-mini**: 20–60 seconds (reasoning models use more compute)
+- **Full pipeline** (GPT-4o, 4 vision passes): 30–90 seconds depending on page count and annotation density
+- **Without DI** (`--no-di`, 2 vision passes): 15–45 seconds
 - STEP parsing: <1 second for typical parts
 
 ---
@@ -365,10 +365,66 @@ All dependencies are open-source with permissive licenses:
 
 | Service | Purpose | Data Sent |
 |---------|---------|-----------|
-| Azure Document Intelligence | OCR text extraction | PDF file content |
-| Azure OpenAI (GPT-4o) | Vision annotation extraction + LLM disambiguation | Page images (base64), OCR text snippets, annotation/feature JSON |
+| Azure Document Intelligence | OCR text extraction + bounding boxes for region cropping | PDF file content |
+| Azure OpenAI (GPT-4o) | Multi-pass vision annotation extraction + LLM disambiguation | Page images + cropped regions (base64), OCR text snippets, annotation/feature JSON |
 
 No data is stored by external services beyond API processing. All API calls use your own Azure subscription.
+
+---
+
+## Future Plans / Improvements
+
+### 1. Custom Azure Document Intelligence Model
+
+The current pipeline uses the **prebuilt-layout** model from Azure Document Intelligence, which is a general-purpose OCR engine. Engineering drawings have highly specialised notation (GD&T symbols, diameter callouts, feature control frames) that a general model can misread or miss entirely.
+
+**Planned improvement:** Train a [custom extraction model](https://learn.microsoft.com/en-us/azure/ai-services/document-intelligence/concept-custom) on labelled engineering drawings using Azure DI Studio. This would:
+
+- Directly extract structured fields (diameter, tolerance, datum refs, hole type) from the OCR layer, reducing LLM dependency for simple callouts.
+- Recognise GD&T symbols (∅, ⌀, ↧, Ⓜ, position frame boxes) as first-class entities rather than Unicode approximations.
+- Provide precise bounding boxes around complete annotation blocks (not individual words), enabling more targeted cropping for the vision pass.
+- Reduce false positives by learning which dimension callouts are holes vs. linear dimensions, surface profiles, or other features.
+
+Training data can be bootstrapped from the existing NIST FTC dataset by labelling the FSI-indexed features on the corresponding drawing pages.
+
+### 2. Two-Stage Extraction (Detect, Then Interpret)
+
+Split the single LLM call into two focused tasks:
+
+- **Stage 1 -- Detection:** A lightweight prompt that asks the model only to list every diameter callout it can see (value + location), without interpreting hole type, GD&T, or tolerances. This maximises recall by keeping the task simple.
+- **Stage 2 -- Interpretation:** For each detected diameter, a follow-up prompt asks the model to classify the hole type, extract tolerances, datum references, and counterbore/countersink details.
+
+This separation reduces cognitive load on the model per call and makes it harder to "miss" a callout because the model was distracted by complex GD&T interpretation.
+
+### 3. Spatial Clustering for Duplicate-Diameter Disambiguation
+
+When multiple ground-truth features share the same diameter (e.g. three groups of ∅1.000 holes at different locations), the current pipeline relies on count and datum references to distinguish them. A more robust approach would use the 3D spatial positions from the STEP file:
+
+- Group STEP cylinders by diameter.
+- Within each diameter group, cluster by spatial proximity (e.g. DBSCAN on 3D centre points).
+- Each spatial cluster becomes a distinct hole group that can be independently matched to drawing annotations.
+
+This would improve correlation accuracy for drawings with many identically-sized holes in different patterns.
+
+### 4. Confidence-Based Filtering Against STEP Features
+
+Use the 3D STEP model as a ground-truth filter for the extracted annotations:
+
+- After extraction, compare the set of unique diameters found in annotations against the set of unique diameters in the STEP file.
+- Any extracted diameter that has no corresponding cylinder in the STEP model is likely a false positive (linear dimension, reference diameter, or misidentified feature) and can be flagged or removed.
+- This would significantly improve precision without affecting recall.
+
+### 5. Higher-Resolution Rendering for Dense Drawings
+
+Currently the pipeline renders PDF pages at 300 DPI. For large-format drawings (D-size, E-size) with dense annotation areas, increasing to 400-600 DPI for the cropped-region pass would improve legibility of small text without dramatically increasing token cost (since only the cropped regions are sent at higher resolution).
+
+### 6. View-Aware Extraction
+
+Explicitly detect drawing views (SECTION A-A, DETAIL B, etc.) from the OCR text and title blocks, then process each view as an independent extraction context. This would:
+
+- Prevent the model from merging annotations that appear in different views but refer to the same hole.
+- Enable view-specific prompts (e.g. "this is a section view -- look for hidden features and cross-drilled holes").
+- Improve traceability by recording which view each annotation was found in.
 
 ---
 

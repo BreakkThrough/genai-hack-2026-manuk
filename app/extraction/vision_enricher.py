@@ -5,9 +5,12 @@ from __future__ import annotations
 import json
 import logging
 import re
+from collections import Counter
+from dataclasses import dataclass
 from pathlib import Path
 
 from openai import AzureOpenAI
+from PIL import Image
 
 from app.config import AzureOpenAIConfig
 from app.models.schemas import (
@@ -16,9 +19,102 @@ from app.models.schemas import (
     HoleType,
     ThreadSpec,
 )
-from app.utils.pdf_utils import image_to_base64, pdf_to_images
+from app.utils.pdf_utils import (
+    crop_annotation_regions,
+    image_to_base64,
+    pdf_to_images,
+)
 
 logger = logging.getLogger(__name__)
+
+
+# ---------------------------------------------------------------------------
+# OCR regex pre-detection of diameter callouts
+# ---------------------------------------------------------------------------
+
+_DIA_CHARS = "\u2205\u00d8\uf06e"  # ∅, Ø, PUA diameter
+
+_OCR_COUNTED_DIA_RE = re.compile(
+    rf"(\d+)\s*X\s*[{_DIA_CHARS}]?\s*\.?(\d+\.?\d*)", re.IGNORECASE
+)
+_OCR_SINGLE_DIA_RE = re.compile(rf"[{_DIA_CHARS}]\s*\.?(\d+\.?\d*)")
+_OCR_THREAD_RE = re.compile(r"M(\d+(?:\.\d+)?)\s*[xX\u00d7]")
+
+
+@dataclass
+class OCRDiameterHit:
+    """A diameter value detected by OCR regex, with occurrence count."""
+    diameter: float
+    count: int = 1
+    source_text: str = ""
+    page: int = 0
+
+
+def _detect_ocr_diameters(
+    page_ocr: dict[int, str],
+    unit: str = "inch",
+) -> list[OCRDiameterHit]:
+    """Scan OCR text for diameter patterns and return unique hits."""
+    min_dia = 0.1 if unit == "inch" else 1.0
+    hits: list[OCRDiameterHit] = []
+
+    for page_num, text in page_ocr.items():
+        for m in _OCR_COUNTED_DIA_RE.finditer(text):
+            count = int(m.group(1))
+            dia = float(m.group(2))
+            if dia >= min_dia:
+                hits.append(OCRDiameterHit(
+                    diameter=dia, count=count,
+                    source_text=m.group(0).strip(), page=page_num,
+                ))
+
+        for m in _OCR_SINGLE_DIA_RE.finditer(text):
+            dia = float(m.group(1))
+            if dia >= min_dia:
+                already = any(
+                    abs(h.diameter - dia) < 0.001 and h.page == page_num
+                    for h in hits
+                )
+                if not already:
+                    hits.append(OCRDiameterHit(
+                        diameter=dia, count=1,
+                        source_text=m.group(0).strip(), page=page_num,
+                    ))
+
+        for m in _OCR_THREAD_RE.finditer(text):
+            dia = float(m.group(1))
+            if dia >= min_dia:
+                hits.append(OCRDiameterHit(
+                    diameter=dia, count=1,
+                    source_text=m.group(0).strip(), page=page_num,
+                ))
+
+    unique: dict[float, OCRDiameterHit] = {}
+    for h in hits:
+        key = round(h.diameter, 3)
+        if key not in unique or h.count > unique[key].count:
+            unique[key] = h
+    return sorted(unique.values(), key=lambda h: h.diameter)
+
+
+def _format_ocr_hints(ocr_hits: list[OCRDiameterHit]) -> str:
+    """Format OCR-detected diameters into a prompt hint string."""
+    if not ocr_hits:
+        return ""
+    dia_strs = []
+    for h in ocr_hits:
+        s = f"{h.diameter}"
+        if h.count > 1:
+            s = f"{h.count}X {s}"
+        dia_strs.append(s)
+    return (
+        "\n\nOCR PRE-SCAN DETECTED DIAMETERS: ["
+        + ", ".join(dia_strs)
+        + "]\nENSURE every diameter in this list is accounted for in your "
+        "extraction. If you cannot find a corresponding hole annotation for "
+        "a listed diameter, look more carefully in detail views, section "
+        "views, and small annotation clusters."
+    )
 
 # ---------------------------------------------------------------------------
 # Model-aware API parameter helpers
@@ -153,6 +249,7 @@ Drawing units: {unit}.
 
 Additional OCR context from Azure Document Intelligence:
 {ocr_context}
+{ocr_diameter_hints}
 
 TASK: Extract ALL hole-related annotations visible on this page.
 
@@ -171,6 +268,8 @@ IMPORTANT:
 - Do NOT include linear dimensions, surface tolerances, slot widths, \
   spherical diameters (S∅), fillets, or radii
 - Do NOT merge holes that have different GD&T annotations
+- After extracting holes, perform a second scan of the page to ensure no \
+  diameter callouts were missed. Check detail views and section views.
 
 Return a JSON array.
 """
@@ -180,11 +279,20 @@ I already extracted these hole annotations from the drawing:
 {found_summary}
 
 Now look at ALL pages again carefully. Are there ANY additional hole \
-annotations (∅ diameter callouts) that I MISSED? Look specifically for:
-- Holes with the same diameter that appear as SEPARATE callouts
-- Holes on different views (section views, detail views)
+annotations (∅ diameter callouts) that I MISSED?
+{ocr_diameter_hints}
+
+Look specifically for:
+- Holes with the same diameter that appear as SEPARATE callouts with \
+  different GD&T, position tolerances, or datum references
+- Holes on different views (section views, detail views, DETAIL A, etc.)
 - Counterbore components (through-hole + counterbore as separate diameters)
 - Small holes (∅.250, ∅.400, etc.) that may be in detail views
+- Any diameter from the OCR pre-scan list above that is NOT yet in my \
+  extraction — these are likely missed holes
+
+IMPORTANT: If a diameter appears in the OCR text but is not assigned to \
+a hole in my extraction, create a new hole annotation for it.
 
 Drawing units: {unit}.
 
@@ -245,6 +353,7 @@ def _call_vision(
     unit: str,
     ocr_text: str,
     deployment: str,
+    ocr_diameter_hints: str = "",
 ) -> list[dict]:
     """Send one page image to the model and return parsed annotation dicts."""
     user_content = [
@@ -253,6 +362,7 @@ def _call_vision(
             total_pages=total_pages,
             unit=unit,
             ocr_context=ocr_text[:4000],
+            ocr_diameter_hints=ocr_diameter_hints,
         )},
         {"type": "image_url", "image_url": {"url": image_b64, "detail": "high"}},
     ]
@@ -268,6 +378,150 @@ def _call_vision(
     )
 
 
+CROPPED_REGION_PROMPT = """\
+This is a CROPPED region from page {page_num} of an engineering drawing.
+Drawing units: {unit}.
+
+The crop focuses on an annotation cluster that may contain hole callouts.
+Extract ALL hole-related annotations visible in this cropped region.
+{ocr_diameter_hints}
+
+Return a JSON array. If no holes are visible, return [].
+Each entry must have: annotation_id, hole_type, count, diameter, raw_text.
+"""
+
+RECONCILE_PROMPT = """\
+I extracted these hole annotations from the drawing:
+{found_summary}
+
+However, the OCR text contains diameter values that are NOT yet accounted for:
+  Missing diameters: {missing_diameters}
+
+Look at the drawing pages carefully and find the hole annotations for \
+these specific diameters. They may be in detail views, section views, or \
+small annotation clusters that were overlooked.
+
+Drawing units: {unit}.
+
+OCR context:
+{ocr_context}
+
+Return a JSON array with ONLY the hole annotations for the missing diameters.
+If you truly cannot find them, return [].
+Each entry must have: annotation_id, hole_type, count, diameter, raw_text, page.
+"""
+
+
+def _call_vision_cropped(
+    client: AzureOpenAI,
+    cropped_images: list[tuple[int, Image.Image]],
+    annotations: list[HoleAnnotation],
+    unit: str,
+    start_idx: int,
+    deployment: str,
+    ocr_diameter_hints: str = "",
+) -> None:
+    """Third pass: run vision on cropped annotation regions."""
+    added = 0
+    for page_num, crop_img in cropped_images:
+        img_b64 = image_to_base64(crop_img)
+        user_content = [
+            {"type": "text", "text": CROPPED_REGION_PROMPT.format(
+                page_num=page_num,
+                unit=unit,
+                ocr_diameter_hints=ocr_diameter_hints,
+            )},
+            {"type": "image_url", "image_url": {"url": img_b64, "detail": "high"}},
+        ]
+
+        response = client.chat.completions.create(
+            model=deployment,
+            messages=_build_messages(SYSTEM_PROMPT, user_content, deployment),
+            **_completion_kwargs(deployment),
+        )
+
+        items = _parse_model_response(
+            response.choices[0].message.content, f"cropped page {page_num}"
+        )
+        for item in items:
+            ann = _parse_annotation(item, page_num, start_idx + added)
+            annotations.append(ann)
+            added += 1
+
+    if added:
+        logger.info("Cropped-region pass added %d annotations", added)
+
+
+def _reconcile_ocr_vs_llm(
+    client: AzureOpenAI,
+    images: list[Image.Image],
+    annotations: list[HoleAnnotation],
+    ocr_hits: list[OCRDiameterHit],
+    unit: str,
+    ocr_text: str,
+    start_idx: int,
+    deployment: str,
+) -> None:
+    """Cross-reference OCR-detected diameters against LLM output;
+    trigger a targeted follow-up for any missing diameters."""
+    extracted_dias: Counter[float] = Counter()
+    for a in annotations:
+        if a.diameter is not None:
+            extracted_dias[round(a.diameter, 3)] += 1
+
+    missing: list[float] = []
+    for h in ocr_hits:
+        key = round(h.diameter, 3)
+        if extracted_dias.get(key, 0) == 0:
+            missing.append(h.diameter)
+
+    if not missing:
+        logger.info("OCR reconciliation: all OCR diameters accounted for")
+        return
+
+    logger.info("OCR reconciliation: %d missing diameters: %s", len(missing), missing)
+
+    found_dias = sorted({a.diameter for a in annotations if a.diameter})
+    found_summary = ", ".join(f"∅{d}" for d in found_dias)
+    missing_str = ", ".join(f"∅{d}" for d in missing)
+
+    user_content: list[dict] = [{
+        "type": "text",
+        "text": RECONCILE_PROMPT.format(
+            found_summary=found_summary,
+            missing_diameters=missing_str,
+            unit=unit,
+            ocr_context=ocr_text[:4000],
+        ),
+    }]
+    for i, img in enumerate(images):
+        user_content.append({"type": "text", "text": f"--- Page {i + 1} ---"})
+        user_content.append({
+            "type": "image_url",
+            "image_url": {"url": image_to_base64(img), "detail": "high"},
+        })
+
+    response = client.chat.completions.create(
+        model=deployment,
+        messages=_build_messages(SYSTEM_PROMPT, user_content, deployment),
+        **_completion_kwargs(deployment),
+    )
+
+    items = _parse_model_response(
+        response.choices[0].message.content, "reconciliation"
+    )
+
+    added = 0
+    for idx, item in enumerate(items):
+        page_num = item.get("page", 1)
+        ann = _parse_annotation(item, page_num, start_idx + idx)
+        annotations.append(ann)
+        added += 1
+
+    if added:
+        logger.info("Reconciliation pass added %d annotations", added)
+
+
 def _verify_and_supplement(
     client: AzureOpenAI,
     images: list,
@@ -277,6 +531,7 @@ def _verify_and_supplement(
     found_summary: str,
     start_idx: int,
     deployment: str,
+    ocr_diameter_hints: str = "",
 ) -> None:
     """Second-pass verification: ask the model if any holes were missed."""
     user_content: list[dict] = [{
@@ -285,6 +540,7 @@ def _verify_and_supplement(
             found_summary=found_summary,
             unit=unit,
             ocr_context=ocr_text[:4000],
+            ocr_diameter_hints=ocr_diameter_hints,
         ),
     }]
     for i, img in enumerate(images):
@@ -452,6 +708,167 @@ def _deduplicate_within_pages(
     return result
 
 
+def _richness(ann: HoleAnnotation) -> int:
+    """Score how much GD&T detail an annotation carries."""
+    score = 0
+    if ann.position_tolerance is not None:
+        score += 2
+    if ann.datum_refs:
+        score += len(ann.datum_refs)
+    if ann.diameter_tolerance_plus is not None:
+        score += 1
+    if ann.depth is not None:
+        score += 1
+    if ann.counterbore_diameter is not None:
+        score += 2
+    if ann.raw_text:
+        score += len(ann.raw_text) // 10
+    return score
+
+
+def _strip_raw(text: str) -> str:
+    """Normalise raw_text for comparison: strip non-ASCII noise, collapse whitespace."""
+    cleaned = []
+    for ch in text:
+        if ch.isascii() or ch in "\u2205\u00d8\uf06e":
+            cleaned.append(ch)
+    return " ".join("".join(cleaned).split()).lower()
+
+
+def _raw_text_similar(a: str, b: str) -> bool:
+    """Check if two raw_text strings are substantially similar."""
+    a, b = _strip_raw(a), _strip_raw(b)
+    if not a or not b:
+        return False
+    if a == b:
+        return True
+    shorter, longer = (a, b) if len(a) <= len(b) else (b, a)
+    if shorter in longer:
+        return True
+    prefix_len = min(15, len(shorter))
+    if prefix_len >= 5 and shorter[:prefix_len] == longer[:prefix_len]:
+        return True
+    return False
+
+
+def _deduplicate_cross_page(
+    annotations: list[HoleAnnotation],
+) -> list[HoleAnnotation]:
+    """Remove duplicates across pages and from multi-pass extraction.
+
+    Two-stage approach:
+      1. Group by (diameter, hole_type) and keep only the richest annotation
+         per distinct (diameter, count, datum_refs signature) combination.
+      2. Within a diameter group, collapse annotations that clearly refer to
+         the same callout (same count or similar raw_text).
+    """
+    if len(annotations) <= 1:
+        return annotations
+
+    result: list[HoleAnnotation] = []
+    skip: set[int] = set()
+
+    for i, a in enumerate(annotations):
+        if i in skip or a.diameter is None:
+            if i not in skip:
+                result.append(a)
+            continue
+
+        duplicates = [i]
+        for j in range(i + 1, len(annotations)):
+            if j in skip:
+                continue
+            b = annotations[j]
+            if b.diameter is None:
+                continue
+            if round(a.diameter, 3) != round(b.diameter, 3):
+                continue
+            if a.hole_type != b.hole_type:
+                continue
+
+            similar_text = _raw_text_similar(a.raw_text, b.raw_text)
+            same_datums = (
+                set(a.datum_refs) == set(b.datum_refs) and bool(a.datum_refs)
+            )
+            same_page_and_count = (a.page == b.page and a.count == b.count)
+
+            if similar_text or same_datums or same_page_and_count:
+                duplicates.append(j)
+
+        if len(duplicates) > 1:
+            best_idx = max(duplicates, key=lambda idx: _richness(annotations[idx]))
+            best = annotations[best_idx]
+            for idx in duplicates:
+                if idx != best_idx:
+                    other = annotations[idx]
+                    if other.count > best.count:
+                        best.count = other.count
+                    skip.add(idx)
+                    logger.info(
+                        "Cross-page dedup: dropped %s (dia=%s, page=%d) "
+                        "in favour of %s (page=%d)",
+                        other.annotation_id, other.diameter, other.page,
+                        best.annotation_id, best.page,
+                    )
+            result.append(best)
+        else:
+            result.append(a)
+
+    filtered = len(annotations) - len(result)
+    if filtered:
+        logger.info("Cross-page dedup removed %d annotations", filtered)
+    return result
+
+
+def _deduplicate_by_diameter(
+    annotations: list[HoleAnnotation],
+) -> list[HoleAnnotation]:
+    """Final safety net: for each unique diameter, ensure we don't have more
+    annotations than is plausible. Keeps annotations that have distinct
+    datum_refs or position_tolerance values (indicating genuinely different
+    callouts) and collapses the rest."""
+    if len(annotations) <= 1:
+        return annotations
+
+    from collections import defaultdict
+    by_dia: dict[float, list[int]] = defaultdict(list)
+    for i, a in enumerate(annotations):
+        if a.diameter is not None:
+            by_dia[round(a.diameter, 3)].append(i)
+
+    skip: set[int] = set()
+    for dia_key, indices in by_dia.items():
+        if len(indices) <= 1:
+            continue
+
+        kept: list[int] = []
+        for idx in indices:
+            a = annotations[idx]
+            is_dup = False
+            for kidx in kept:
+                k = annotations[kidx]
+                if (a.hole_type == k.hole_type
+                        and a.count == k.count
+                        and set(a.datum_refs) == set(k.datum_refs)):
+                    skip.add(idx)
+                    is_dup = True
+                    logger.info(
+                        "Diameter dedup: dropped %s (dia=%s, page=%d, datums=%s) "
+                        "duplicate of %s (page=%d)",
+                        a.annotation_id, a.diameter, a.page, a.datum_refs,
+                        k.annotation_id, k.page,
+                    )
+                    break
+            if not is_dup:
+                kept.append(idx)
+
+    result = [a for i, a in enumerate(annotations) if i not in skip]
+    filtered = len(annotations) - len(result)
+    if filtered:
+        logger.info("Diameter-based dedup removed %d annotations", filtered)
+    return result
+
+
 def _reassign_ids(annotations: list[HoleAnnotation]) -> list[HoleAnnotation]:
     """Re-assign globally unique sequential IDs after filtering."""
     for i, a in enumerate(annotations):
@@ -475,6 +892,16 @@ def enrich_drawing(
 ) -> DrawingAnnotations:
     """
     Full vision enrichment pipeline for a drawing PDF.
+
+    Pipeline stages:
+        1. Build OCR context from Azure DI result
+        2. OCR regex pre-detection of diameter callouts
+        3. Per-page LLM extraction (with OCR diameter hints)
+        4. Verification pass with OCR hints
+        5. Cropped-region pass on dense annotation clusters
+        6. OCR-vs-LLM reconciliation for missed diameters
+        7. Filters + within-page dedup + cross-page dedup
+        8. Reassign sequential IDs
 
     Parameters
     ----------
@@ -505,7 +932,7 @@ def enrich_drawing(
 
     all_annotations: list[HoleAnnotation] = []
 
-    # Build OCR context from DI result
+    # --- Stage 1: Build OCR context from DI result ---
     full_ocr = ""
     page_ocr: dict[int, str] = {}
     if di_result:
@@ -514,14 +941,25 @@ def enrich_drawing(
             page_ocr[page.page_number] = text
             full_ocr += f"[Page {page.page_number}] {text}\n"
 
-    # Per-page extraction
+    # --- Stage 2: OCR regex pre-detection ---
+    ocr_hits = _detect_ocr_diameters(page_ocr, unit=unit)
+    ocr_hints_str = _format_ocr_hints(ocr_hits)
+    if ocr_hits:
+        logger.info(
+            "OCR pre-scan detected %d unique diameters: %s",
+            len(ocr_hits),
+            [h.diameter for h in ocr_hits],
+        )
+
+    # --- Stage 3: Per-page LLM extraction (with OCR hints) ---
     global_idx = 0
     for i, img in enumerate(images):
         page_num = i + 1
         img_b64 = image_to_base64(img)
         ocr_text = page_ocr.get(page_num, "")
         items = _call_vision(
-            client, img_b64, page_num, len(images), unit, ocr_text, deployment
+            client, img_b64, page_num, len(images), unit, ocr_text,
+            deployment, ocr_diameter_hints=ocr_hints_str,
         )
         for item in items:
             all_annotations.append(_parse_annotation(item, page_num, global_idx))
@@ -532,19 +970,41 @@ def enrich_drawing(
         len(all_annotations), len(images),
     )
 
-    # Second pass: verification sweep
+    # --- Stage 4: Verification pass with OCR hints ---
     if multi_page and len(images) > 1:
         found_dias = [a.diameter for a in all_annotations if a.diameter]
-        found_summary = ", ".join(f"{d}" for d in sorted(set(found_dias)))
+        found_summary = ", ".join(f"∅{d}" for d in sorted(set(found_dias)))
         _verify_and_supplement(
             client, images, all_annotations, unit, full_ocr,
             found_summary, global_idx, deployment,
+            ocr_diameter_hints=ocr_hints_str,
+        )
+        global_idx = len(all_annotations)
+
+    # --- Stage 5: Cropped-region pass ---
+    if di_result:
+        cropped_regions = crop_annotation_regions(images, di_result)
+        if cropped_regions:
+            _call_vision_cropped(
+                client, cropped_regions, all_annotations, unit,
+                global_idx, deployment, ocr_diameter_hints=ocr_hints_str,
+            )
+            global_idx = len(all_annotations)
+
+    # --- Stage 6: OCR-vs-LLM reconciliation ---
+    if ocr_hits:
+        _reconcile_ocr_vs_llm(
+            client, images, all_annotations, ocr_hits, unit,
+            full_ocr, global_idx, deployment,
         )
 
+    # --- Stage 7 & 8: Filters + dedup + reassign IDs ---
     if apply_filters:
         all_annotations = _filter_null_diameters(all_annotations, unit=unit)
         all_annotations = _filter_non_hole_annotations(all_annotations)
         all_annotations = _deduplicate_within_pages(all_annotations)
+        all_annotations = _deduplicate_cross_page(all_annotations)
+        all_annotations = _deduplicate_by_diameter(all_annotations)
         all_annotations = _reassign_ids(all_annotations)
         logger.info("After filtering: %d annotations", len(all_annotations))
 

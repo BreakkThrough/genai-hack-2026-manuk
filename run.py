@@ -2,7 +2,7 @@
 Simple CLI entry point: PDF + STEP → structured JSON output.
 
 Usage:
-    python run.py --pdf <drawing.pdf> --step <model.stp> [--unit inch|mm] [--model gpt-4o] [--output result.json]
+    python run.py --pdf <drawing.pdf> --step <model.stp> [--unit inch|mm] [--output result.json]
 
 Example with NIST dataset:
     python run.py --pdf dataset/nist_ftc_06_asme1_rd.pdf --step dataset/nist_ftc_06_asme1_rd.stp --output linkage_ftc06.json
@@ -29,7 +29,6 @@ def main() -> int:
     parser.add_argument("--pdf", required=True, help="Path to the engineering drawing PDF")
     parser.add_argument("--step", required=True, help="Path to the STEP (.stp/.step) file")
     parser.add_argument("--unit", default="inch", choices=["inch", "mm"], help="Drawing units (default: inch)")
-    parser.add_argument("--model", default="gpt-4o", help="Azure OpenAI deployment name (default: gpt-4o)")
     parser.add_argument("--output", "-o", default="linkage_result.json", help="Output JSON path (default: linkage_result.json)")
     parser.add_argument("--no-di", action="store_true", help="Skip Azure Document Intelligence (vision-only mode)")
     parser.add_argument("--no-llm", action="store_true", help="Skip LLM disambiguation in correlation")
@@ -50,8 +49,6 @@ def main() -> int:
     from app.extraction.vision_enricher import enrich_drawing
     from app.correlation.matcher import correlate
 
-    api_ver = "2025-04-01-preview" if args.model != "gpt-4o" else None
-
     # Layer 1: Azure Document Intelligence
     di_result = None
     if not args.no_di:
@@ -65,15 +62,13 @@ def main() -> int:
     else:
         logger.info("Layer 1/4: Skipped (--no-di)")
 
-    # Layer 2: Vision enrichment
-    logger.info("Layer 2/4: %s vision enrichment...", args.model)
+    # Layer 2: Vision enrichment (GPT-4o)
+    logger.info("Layer 2/4: GPT-4o vision enrichment...")
     annotations = enrich_drawing(
         pdf_path,
         di_result=di_result,
         unit=args.unit,
         apply_filters=True,
-        model_deployment=args.model,
-        api_version=api_ver,
     )
     logger.info("  -> %d hole annotations extracted", len(annotations.annotations))
 

@@ -106,7 +106,7 @@ for _k in _STATE_KEYS:
 # Sidebar
 # ──────────────────────────────────────────────────────────────────────────────
 
-def _sidebar() -> tuple[Path | None, Path | None, str, str]:
+def _sidebar() -> tuple[Path | None, Path | None, str]:
     st.sidebar.title("Drawing - 3D Hole Linker")
     st.sidebar.markdown("---")
 
@@ -122,7 +122,7 @@ def _sidebar() -> tuple[Path | None, Path | None, str, str]:
 
         if not drawing_pdfs:
             st.sidebar.warning("No drawing PDFs found in dataset/")
-            return None, None, unit, "gpt-4o"
+            return None, None, unit
 
         pdf_names = [p.name for p in drawing_pdfs]
         chosen_pdf = st.sidebar.selectbox("Drawing PDF", pdf_names)
@@ -154,29 +154,24 @@ def _sidebar() -> tuple[Path | None, Path | None, str, str]:
             step_path = tmp
 
     st.sidebar.markdown("---")
-    model = st.sidebar.selectbox(
-        "Vision Model",
-        ["gpt-4o"],
-        help="Azure OpenAI deployment for hole extraction",
-    )
+    st.sidebar.markdown("**Vision Model:** GPT-4o")
     st.sidebar.markdown(f"**Units:** {unit}")
 
-    return pdf_path, step_path, unit, model
+    return pdf_path, step_path, unit
 
 
 # ──────────────────────────────────────────────────────────────────────────────
 # Pipeline execution
 # ──────────────────────────────────────────────────────────────────────────────
 
-def _run_pipeline(pdf_path: Path, step_path: Path, unit: str, model: str = "gpt-4o"):
+def _run_pipeline(pdf_path: Path, step_path: Path, unit: str):
     for k in _STATE_KEYS:
         st.session_state[k] = None
 
     st.session_state.pdf_path_used = str(pdf_path)
     st.session_state.step_path_used = str(step_path)
-    st.session_state.model_used = model
+    st.session_state.model_used = "GPT-4o"
 
-    api_ver = "2025-04-01-preview" if model != "gpt-4o" else None
     progress = st.progress(0, text="Starting pipeline...")
 
     # Layer 1: Azure DI layout extraction
@@ -188,12 +183,11 @@ def _run_pipeline(pdf_path: Path, step_path: Path, unit: str, model: str = "gpt-
         st.session_state.layer1_error = str(exc)
         di_result = None
 
-    # Layer 2: Vision enrichment
-    progress.progress(30, text=f"Layer 2/4 -- {model} vision enrichment...")
+    # Layer 2: Vision enrichment (GPT-4o)
+    progress.progress(30, text="Layer 2/4 -- GPT-4o multi-pass vision enrichment...")
     try:
         annotations = enrich_drawing(
             pdf_path, di_result=di_result, unit=unit, apply_filters=True,
-            model_deployment=model, api_version=api_ver,
         )
         st.session_state.annotations = annotations
     except Exception as exc:
@@ -498,7 +492,7 @@ def _render_json_export(linkage: LinkageResult):
 # ──────────────────────────────────────────────────────────────────────────────
 
 def main():
-    pdf_path, step_path, unit, model = _sidebar()
+    pdf_path, step_path, unit = _sidebar()
 
     st.title("GenAI-Powered Drawing - 3D Hole Feature Linker")
     st.markdown(
@@ -508,7 +502,7 @@ def main():
 
     if pdf_path and step_path:
         if st.sidebar.button("Run Pipeline", type="primary"):
-            _run_pipeline(pdf_path, step_path, unit, model=model)
+            _run_pipeline(pdf_path, step_path, unit)
 
     linkage: LinkageResult | None = st.session_state.linkage_result
     has_any_result = any(
