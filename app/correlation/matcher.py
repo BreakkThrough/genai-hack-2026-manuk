@@ -199,6 +199,60 @@ def _llm_disambiguate(
 
 
 # ---------------------------------------------------------------------------
+# Evidence & interpretation helpers
+# ---------------------------------------------------------------------------
+
+_CONFIDENCE_SCORE = {
+    MatchConfidence.HIGH: 0.95,
+    MatchConfidence.MEDIUM: 0.70,
+    MatchConfidence.LOW: 0.35,
+}
+
+
+def _build_evidence(ann: HoleAnnotation) -> EvidenceTrace:
+    return EvidenceTrace(
+        page=ann.page,
+        bounding_box=ann.bounding_box,
+        raw_text=ann.raw_text,
+    )
+
+
+def _build_interpretation(ann: HoleAnnotation) -> dict:
+    interp: dict = {
+        "hole_type": ann.hole_type.value,
+        "diameter": ann.diameter,
+        "count": ann.count,
+    }
+    if ann.thread_spec:
+        interp["thread_type"] = ann.thread_spec.designation
+        if ann.thread_spec.pitch:
+            interp["thread_pitch"] = ann.thread_spec.pitch
+        if ann.thread_spec.tolerance_class:
+            interp["tolerance_class"] = ann.thread_spec.tolerance_class
+    if ann.depth is not None:
+        interp["depth"] = ann.depth
+    if ann.fit_designation:
+        interp["fit_designation"] = ann.fit_designation
+    if ann.counterbore_diameter is not None:
+        interp["counterbore_diameter"] = ann.counterbore_diameter
+    if ann.counterbore_depth is not None:
+        interp["counterbore_depth"] = ann.counterbore_depth
+    if ann.countersink_diameter is not None:
+        interp["countersink_diameter"] = ann.countersink_diameter
+    if ann.countersink_angle is not None:
+        interp["countersink_angle"] = ann.countersink_angle
+    if ann.position_tolerance is not None:
+        interp["position_tolerance"] = ann.position_tolerance
+    if ann.datum_refs:
+        interp["datum_refs"] = ann.datum_refs
+    if ann.diameter_tolerance_plus is not None:
+        interp["diameter_tolerance_plus"] = ann.diameter_tolerance_plus
+    if ann.diameter_tolerance_minus is not None:
+        interp["diameter_tolerance_minus"] = ann.diameter_tolerance_minus
+    return interp
+
+
+# ---------------------------------------------------------------------------
 # Main correlation pipeline
 # ---------------------------------------------------------------------------
 
@@ -266,7 +320,10 @@ def correlate(
             annotation_id=ann.annotation_id,
             hole_ids=hole_ids,
             confidence=confidence,
+            confidence_score=_CONFIDENCE_SCORE.get(confidence, 0.5),
             match_reasons=reasons,
+            evidence=_build_evidence(ann),
+            parsed_interpretation=_build_interpretation(ann),
         ))
         mapped_ann_ids.add(ann.annotation_id)
         mapped_hole_ids.update(hole_ids)

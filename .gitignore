@@ -23,7 +23,7 @@ env/
 Thumbs.db
 .DS_Store
 
-# Generated pipeline outputs
+# Generated pipeline outputs (sample_output.json is tracked)
 linkage_*.json
 
 # Streamlit
