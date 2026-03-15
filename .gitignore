@@ -26,5 +26,11 @@ Thumbs.db
 # Generated pipeline outputs (sample_output.json is tracked)
 linkage_*.json
 
-# Streamlit
-.streamlit/
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+frontend/.env.local
+
+# Temporary session files
+session_*/

@@ -181,18 +181,35 @@ python run.py --pdf drawing.pdf --step model.stp --no-llm
 | `--no-di` | false | Skip Azure Document Intelligence (also disables cropped-region pass) |
 | `--no-llm` | false | Skip LLM disambiguation |
 
-### Option 2: Streamlit Web App
+### Option 2: Interactive Web UI (React + FastAPI)
 
+Start the backend and frontend in separate terminals:
+
+**Terminal 1 - Backend:**
 ```bash
-streamlit run app/main.py
+# Activate virtual environment
+.venv\Scripts\activate  # Windows
+source .venv/bin/activate  # macOS/Linux
+
+# Start FastAPI server
+uvicorn app.api:app --reload --port 8000
 ```
 
-The web app provides:
-- Interactive file selection (dataset or upload)
-- Visual pipeline I/O inspection for each layer
-- Drawing page viewer with annotation overlays
-- Results table with confidence indicators
-- JSON export download
+**Terminal 2 - Frontend:**
+```bash
+cd frontend
+npm run dev
+```
+
+Then open your browser to `http://localhost:5173`
+
+The web UI provides:
+- Interactive step-by-step pipeline execution
+- Real-time 2D drawing viewer with page navigation
+- Annotation overlays and clickable annotation list
+- Context-sensitive output panel for each layer
+- Editable mapping table with dropdown selectors
+- JSON export with download button
 
 ---
 
@@ -316,7 +333,7 @@ manuk/
 │   └── nist_ftc_11_asme1_rb.stp
 ├── app/
 │   ├── __init__.py
-│   ├── main.py                     # Streamlit web app
+│   ├── api.py                      # FastAPI REST API backend
 │   ├── config.py                   # Azure credential config
 │   ├── validation.py               # Ground-truth comparison & metrics
 │   ├── extraction/
@@ -334,6 +351,21 @@ manuk/
 │       ├── __init__.py
 │       ├── pdf_utils.py            # PDF to image conversion
 │       └── geometry_utils.py       # 3D geometry helpers
+├── frontend/                       # React + TypeScript web UI
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── Sidebar.tsx         # File upload and pipeline control
+│   │   │   ├── PipelineStepBar.tsx # Step-by-step progress indicator
+│   │   │   ├── DrawingViewer.tsx   # 2D drawing viewer with annotations
+│   │   │   ├── LayerOutputPanel.tsx # Context-sensitive layer output
+│   │   │   ├── MappingTable.tsx    # Editable annotation-to-hole mappings
+│   │   │   └── JSONExportPanel.tsx # JSON preview and download
+│   │   ├── App.tsx                 # Main application component
+│   │   ├── api.ts                  # API client for backend communication
+│   │   ├── types.ts                # TypeScript type definitions
+│   │   └── main.tsx                # React entry point
+│   ├── package.json
+│   └── vite.config.ts
 ```
 
 ---
@@ -344,6 +376,8 @@ Typical end-to-end runtime per drawing (single PDF + STEP):
 - **Without DI** (`--no-di`, 2 vision passes): 15–45 seconds
 - STEP parsing: <1 second for typical parts
 
+**Web UI:** The interactive React frontend allows you to run each layer step-by-step and inspect intermediate results, making it easier to debug and understand the pipeline behavior.
+
 ---
 
 ## Dependencies & Licenses
@@ -352,7 +386,9 @@ All dependencies are open-source with permissive licenses:
 
 | Package | Version | License | Purpose |
 |---------|---------|---------|---------|
-| [streamlit](https://streamlit.io/) | ≥1.30.0 | Apache-2.0 | Web application UI |
+| [fastapi](https://fastapi.tiangolo.com/) | ≥0.109.0 | MIT | REST API backend |
+| [uvicorn](https://www.uvicorn.org/) | ≥0.27.0 | BSD-3-Clause | ASGI web server |
+| [python-multipart](https://pypi.org/project/python-multipart/) | ≥0.0.6 | Apache-2.0 | File upload support |
 | [azure-ai-documentintelligence](https://pypi.org/project/azure-ai-documentintelligence/) | ≥1.0.0 | MIT | Azure DI SDK for OCR extraction |
 | [openai](https://pypi.org/project/openai/) | ≥1.12.0 | Apache-2.0 | Azure OpenAI API client |
 | [pydantic](https://pydantic.dev/) | ≥2.5.0 | MIT | Data validation and schemas |
@@ -360,6 +396,16 @@ All dependencies are open-source with permissive licenses:
 | [Pillow](https://python-pillow.org/) | ≥10.0.0 | HPND | Image processing |
 | [numpy](https://numpy.org/) | ≥1.24.0 | BSD-3-Clause | Geometry calculations |
 | [python-dotenv](https://pypi.org/project/python-dotenv/) | ≥1.0.0 | BSD-3-Clause | Environment variable loading |
+
+**Frontend Dependencies:**
+
+| Package | Purpose |
+|---------|---------|
+| React 19 | UI framework |
+| TypeScript | Type safety |
+| Material-UI (MUI) | Component library |
+| Axios | HTTP client |
+| Vite | Build tool and dev server |
 
 ### External Services
 
