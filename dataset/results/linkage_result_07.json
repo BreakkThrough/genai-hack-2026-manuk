@@ -1,0 +1,3881 @@
+{
+  "drawing_pdf": "C:\\Users\\manojv\\Downloads\\manuk\\dataset\\nist_ftc_07_asme1_rd.pdf",
+  "step_file": "C:\\Users\\manojv\\Downloads\\manuk\\dataset\\nist_ftc_07_asme1_rd.stp",
+  "annotations": {
+    "source_pdf": "C:\\Users\\manojv\\Downloads\\manuk\\dataset\\nist_ftc_07_asme1_rd.pdf",
+    "unit": "inch",
+    "annotations": [
+      {
+        "annotation_id": "H1",
+        "hole_type": "simple",
+        "count": 4,
+        "diameter": 0.25,
+        "diameter_tolerance_plus": 0.003,
+        "diameter_tolerance_minus": -0.001,
+        "depth": null,
+        "depth_tolerance": null,
+        "thread_spec": null,
+        "counterbore_diameter": null,
+        "counterbore_depth": null,
+        "countersink_diameter": null,
+        "countersink_angle": null,
+        "position_tolerance": 0.02,
+        "datum_refs": [
+          "D",
+          "B",
+          "C"
+        ],
+        "fit_designation": null,
+        "raw_text": "4X ∅.250 +.003 -.001\n⏥.30 ±.02\n⭧∅.023⭨.150 D B C",
+        "bounding_box": null,
+        "page": 1,
+        "confidence": 0.85
+      },
+      {
+        "annotation_id": "H2",
+        "hole_type": "simple",
+        "count": 2,
+        "diameter": 0.25,
+        "diameter_tolerance_plus": 0.003,
+        "diameter_tolerance_minus": -0.0,
+        "depth": null,
+        "depth_tolerance": null,
+        "thread_spec": null,
+        "counterbore_diameter": null,
+        "counterbore_depth": null,
+        "countersink_diameter": null,
+        "countersink_angle": null,
+        "position_tolerance": 0.02,
+        "datum_refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "fit_designation": null,
+        "raw_text": "2X ∅.250 +.003 -.000\n⏥.30 ±.02\n⭧∅.023⭨.425 A B C",
+        "bounding_box": null,
+        "page": 1,
+        "confidence": 0.85
+      },
+      {
+        "annotation_id": "H3",
+        "hole_type": "simple",
+        "count": 1,
+        "diameter": 0.25,
+        "diameter_tolerance_plus": 0.003,
+        "diameter_tolerance_minus": -0.0,
+        "depth": null,
+        "depth_tolerance": null,
+        "thread_spec": null,
+        "counterbore_diameter": null,
+        "counterbore_depth": null,
+        "countersink_diameter": null,
+        "countersink_angle": null,
+        "position_tolerance": 0.015,
+        "datum_refs": [
+          "A"
+        ],
+        "fit_designation": null,
+        "raw_text": "∅.250 +.003 -.000 0.015 A",
+        "bounding_box": null,
+        "page": 1,
+        "confidence": 0.85
+      },
+      {
+        "annotation_id": "H4",
+        "hole_type": "simple",
+        "count": 4,
+        "diameter": 0.281,
+        "diameter_tolerance_plus": 0.006,
+        "diameter_tolerance_minus": 0.001,
+        "depth": null,
+        "depth_tolerance": null,
+        "thread_spec": null,
+        "counterbore_diameter": null,
+        "counterbore_depth": null,
+        "countersink_diameter": null,
+        "countersink_angle": null,
+        "position_tolerance": 0.06,
+        "datum_refs": [
+          "M",
+          "E",
+          "B",
+          "C"
+        ],
+        "fit_designation": null,
+        "raw_text": "4X Ø.281 +.006 -.001 0.06 M EBC",
+        "bounding_box": null,
+        "page": 2,
+        "confidence": 0.85
+      },
+      {
+        "annotation_id": "H5",
+        "hole_type": "counterbore",
+        "count": 1,
+        "diameter": 0.438,
+        "diameter_tolerance_plus": 0.01,
+        "diameter_tolerance_minus": 0.01,
+        "depth": null,
+        "depth_tolerance": null,
+        "thread_spec": null,
+        "counterbore_diameter": 0.3,
+        "counterbore_depth": null,
+        "countersink_diameter": null,
+        "countersink_angle": null,
+        "position_tolerance": 0.02,
+        "datum_refs": [
+          "A"
+        ],
+        "fit_designation": null,
+        "raw_text": "Ø.438 ±.010 Ø.30 ±.02 0.02 A",
+        "bounding_box": null,
+        "page": 2,
+        "confidence": 0.85
+      },
+      {
+        "annotation_id": "H6",
+        "hole_type": "simple",
+        "count": 2,
+        "diameter": 0.594,
+        "diameter_tolerance_plus": 0.012,
+        "diameter_tolerance_minus": 0.002,
+        "depth": null,
+        "depth_tolerance": null,
+        "thread_spec": null,
+        "counterbore_diameter": null,
+        "counterbore_depth": null,
+        "countersink_diameter": null,
+        "countersink_angle": null,
+        "position_tolerance": 0.045,
+        "datum_refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "fit_designation": null,
+        "raw_text": "2X Ø.594 +.012 -.002 0.040M Ø.045 MAX A B C",
+        "bounding_box": null,
+        "page": 3,
+        "confidence": 0.85
+      },
+      {
+        "annotation_id": "H7",
+        "hole_type": "simple",
+        "count": 4,
+        "diameter": 0.173,
+        "diameter_tolerance_plus": 0.005,
+        "diameter_tolerance_minus": 0.0,
+        "depth": null,
+        "depth_tolerance": null,
+        "thread_spec": null,
+        "counterbore_diameter": null,
+        "counterbore_depth": null,
+        "countersink_diameter": null,
+        "countersink_angle": null,
+        "position_tolerance": 0.06,
+        "datum_refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "fit_designation": null,
+        "raw_text": "4X ∅.173 +.005 -.000 0.060 A B C",
+        "bounding_box": null,
+        "page": 2,
+        "confidence": 0.85
+      },
+      {
+        "annotation_id": "H8",
+        "hole_type": "simple",
+        "count": 3,
+        "diameter": 0.875,
+        "diameter_tolerance_plus": 0.02,
+        "diameter_tolerance_minus": 0.01,
+        "depth": null,
+        "depth_tolerance": null,
+        "thread_spec": null,
+        "counterbore_diameter": null,
+        "counterbore_depth": null,
+        "countersink_diameter": null,
+        "countersink_angle": null,
+        "position_tolerance": 0.05,
+        "datum_refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "fit_designation": null,
+        "raw_text": "3X ∅.875 ±.020 ST 3X ∅.875 ±.010 0.050 ST A B C",
+        "bounding_box": null,
+        "page": 2,
+        "confidence": 0.85
+      },
+      {
+        "annotation_id": "H9",
+        "hole_type": "simple",
+        "count": 1,
+        "diameter": 0.438,
+        "diameter_tolerance_plus": 0.01,
+        "diameter_tolerance_minus": -0.01,
+        "depth": null,
+        "depth_tolerance": null,
+        "thread_spec": null,
+        "counterbore_diameter": null,
+        "counterbore_depth": null,
+        "countersink_diameter": null,
+        "countersink_angle": null,
+        "position_tolerance": 0.3,
+        "datum_refs": [
+          "E",
+          "B",
+          "C"
+        ],
+        "fit_designation": null,
+        "raw_text": "∅.438 ±.010 ∇.30 ±.02 E B C",
+        "bounding_box": null,
+        "page": 2,
+        "confidence": 0.85
+      }
+    ]
+  },
+  "features_3d": {
+    "source_step": "C:\\Users\\manojv\\Downloads\\manuk\\dataset\\nist_ftc_07_asme1_rd.stp",
+    "total_cylindrical_faces": 106,
+    "holes": [
+      {
+        "hole_id": "hole_0",
+        "hole_type": "simple",
+        "primary_diameter": 0.034,
+        "primary_depth": null,
+        "counterbore_diameter": null,
+        "counterbore_depth": null,
+        "center": {
+          "x": -7.19627480733815,
+          "y": 0.413,
+          "z": -1.528774807338147
+        },
+        "axis": {
+          "dx": 0.707106781186548,
+          "dy": 0.0,
+          "dz": -0.707106781186548
+        },
+        "is_through": false,
+        "cylinders": [
+          {
+            "feature_id": "cyl_0",
+            "diameter": 0.034,
+            "radius": 0.017,
+            "depth": null,
+            "center": {
+              "x": -7.19627480733815,
+              "y": 0.413,
+              "z": -1.528774807338147
+            },
+            "axis": {
+              "dx": 0.707106781186548,
+              "dy": 0.0,
+              "dz": -0.707106781186548
+            },
+            "is_through": false,
+            "face_index": 122
+          },
+          {
+            "feature_id": "cyl_10",
+            "diameter": 0.034,
+            "radius": 0.017,
+            "depth": null,
+            "center": {
+              "x": -7.301751508753921,
+              "y": 0.413,
+              "z": -1.634251508753918
+            },
+            "axis": {
+              "dx": 0.707106781186548,
+              "dy": 0.0,
+              "dz": -0.707106781186548
+            },
+            "is_through": false,
+            "face_index": 1081
+          }
+        ]
+      },
+      {
+        "hole_id": "hole_1",
+        "hole_type": "simple",
+        "primary_diameter": 0.034,
+        "primary_depth": null,
+        "counterbore_diameter": null,
+        "counterbore_depth": null,
+        "center": {
+          "x": -4.570196230202155,
+          "y": 0.413,
+          "z": -4.030416709171721
+        },
+        "axis": {
+          "dx": 1.0,
+          "dy": 0.0,
+          "dz": 0.0
+        },
+        "is_through": false,
+        "cylinders": [
+          {
+            "feature_id": "cyl_1",
+            "diameter": 0.034,
+            "radius": 0.017,
+            "depth": null,
+            "center": {
+              "x": -4.570196230202155,
+              "y": 0.413,
+              "z": -4.030416709171721
+            },
+            "axis": {
+              "dx": 1.0,
+              "dy": 0.0,
+              "dz": 0.0
+            },
+            "is_through": false,
+            "face_index": 188
+          },
+          {
+            "feature_id": "cyl_11",
+            "diameter": 0.034,
+            "radius": 0.017,
+            "depth": null,
+            "center": {
+              "x": -4.570196230202158,
+              "y": 0.413,
+              "z": -4.179583290828282
+            },
+            "axis": {
+              "dx": 1.0,
+              "dy": 0.0,
+              "dz": 0.0
+            },
+            "is_through": false,
+            "face_index": 1132
+          }
+        ]
+      },
+      {
+        "hole_id": "hole_2",
+        "hole_type": "simple",
+        "primary_diameter": 0.034,
+        "primary_depth": null,
+        "counterbore_diameter": null,
+        "counterbore_depth": null,
+        "center": {
+          "x": 4.456274807338136,
+          "y": 0.413,
+          "z": -4.268774807338155
+        },
+        "axis": {
+          "dx": 0.707106781186549,
+          "dy": 0.0,
+          "dz": 0.707106781186546
+        },
+        "is_through": false,
+        "cylinders": [
+          {
+            "feature_id": "cyl_2",
+            "diameter": 0.034,
+            "radius": 0.017,
+            "depth": null,
+            "center": {
+              "x": 4.456274807338136,
+              "y": 0.413,
+              "z": -4.268774807338155
+            },
+            "axis": {
+              "dx": 0.707106781186549,
+              "dy": 0.0,
+              "dz": 0.707106781186546
+            },
+            "is_through": false,
+            "face_index": 254
+          },
+          {
+            "feature_id": "cyl_12",
+            "diameter": 0.034,
+            "radius": 0.017,
+            "depth": null,
+            "center": {
+              "x": 4.561751508753906,
+              "y": 0.413,
+              "z": -4.374251508753926
+            },
+            "axis": {
+              "dx": 0.707106781186549,
+              "dy": 0.0,
+              "dz": 0.707106781186546
+            },
+            "is_through": false,
+            "face_index": 1183
+          }
+        ]
+      },
+      {
+        "hole_id": "hole_3",
+        "hole_type": "simple",
+        "primary_diameter": 0.034,
+        "primary_depth": null,
+        "counterbore_diameter": null,
+        "counterbore_depth": null,
+        "center": {
+          "x": 5.780416709171719,
+          "y": 0.413,
+          "z": 0.642401884898921
+        },
+        "axis": {
+          "dx": 3.719704e-16,
+          "dy": 0.0,
+          "dz": 1.0
+        },
+        "is_through": false,
+        "cylinders": [
+          {
+            "feature_id": "cyl_3",
+            "diameter": 0.034,
+            "radius": 0.017,
+            "depth": null,
+            "center": {
+              "x": 5.780416709171719,
+              "y": 0.413,
+              "z": 0.642401884898921
+            },
+            "axis": {
+              "dx": 3.719704e-16,
+              "dy": 0.0,
+              "dz": 1.0
+            },
+            "is_through": false,
+            "face_index": 320
+          },
+          {
+            "feature_id": "cyl_13",
+            "diameter": 0.034,
+            "radius": 0.017,
+            "depth": null,
+            "center": {
+              "x": 5.929583290828281,
+              "y": 0.413,
+              "z": 0.64240188489892
+            },
+            "axis": {
+              "dx": 3.719704e-16,
+              "dy": 0.0,
+              "dz": 1.0
+            },
+            "is_through": false,
+            "face_index": 1234
+          }
+        ]
+      },
+      {
+        "hole_id": "hole_4",
+        "hole_type": "simple",
+        "primary_diameter": 0.034,
+        "primary_depth": null,
+        "counterbore_diameter": null,
+        "counterbore_depth": null,
+        "center": {
+          "x": 2.858676692237069,
+          "y": 0.413,
+          "z": 5.866372922439223
+        },
+        "axis": {
+          "dx": -0.707106781186547,
+          "dy": 0.0,
+          "dz": 0.707106781186548
+        },
+        "is_through": false,
+        "cylinders": [
+          {
+            "feature_id": "cyl_4",
+            "diameter": 0.034,
+            "radius": 0.017,
+            "depth": null,
+            "center": {
+              "x": 2.858676692237069,
+              "y": 0.413,
+              "z": 5.866372922439223
+            },
+            "axis": {
+              "dx": -0.707106781186547,
+              "dy": 0.0,
+              "dz": 0.707106781186548
+            },
+            "is_through": false,
+            "face_index": 386
+          },
+          {
+            "feature_id": "cyl_14",
+            "diameter": 0.034,
+            "radius": 0.017,
+            "depth": null,
+            "center": {
+              "x": 2.964153393652841,
+              "y": 0.413,
+              "z": 5.971849623854991
+            },
+            "axis": {
+              "dx": -0.707106781186547,
+              "dy": 0.0,
+              "dz": 0.707106781186548
+            },
+            "is_through": false,
+            "face_index": 1285
+          }
+        ]
+      },
+      {
+        "hole_id": "hole_5",
+        "hole_type": "simple",
+        "primary_diameter": 0.034,
+        "primary_depth": null,
+        "counterbore_diameter": null,
+        "counterbore_depth": null,
+        "center": {
+          "x": -3.499641e-15,
+          "y": 0.413,
+          "z": 4.030416709171721
+        },
+        "axis": {
+          "dx": -1.0,
+          "dy": 0.0,
+          "dz": 7.651237e-17
+        },
+        "is_through": false,
+        "cylinders": [
+          {
+            "feature_id": "cyl_5",
+            "diameter": 0.034,
+            "radius": 0.017,
+            "depth": null,
+            "center": {
+              "x": -3.499641e-15,
+              "y": 0.413,
+              "z": 4.030416709171721
+            },
+            "axis": {
+              "dx": -1.0,
+              "dy": 0.0,
+              "dz": 7.651237e-17
+            },
+            "is_through": false,
+            "face_index": 452
+          },
+          {
+            "feature_id": "cyl_15",
+            "diameter": 0.034,
+            "radius": 0.017,
+            "depth": null,
+            "center": {
+              "x": -3.494029e-15,
+              "y": 0.413,
+              "z": 4.179583290828282
+            },
+            "axis": {
+              "dx": -1.0,
+              "dy": 0.0,
+              "dz": 7.651237e-17
+            },
+            "is_through": false,
+            "face_index": 1336
+          }
+        ]
+      },
+      {
+        "hole_id": "hole_6",
+        "hole_type": "simple",
+        "primary_diameter": 0.034,
+        "primary_depth": null,
+        "counterbore_diameter": null,
+        "counterbore_depth": null,
+        "center": {
+          "x": -4.688872922439228,
+          "y": 0.413,
+          "z": 4.036176692237071
+        },
+        "axis": {
+          "dx": -0.707106781186548,
+          "dy": 0.0,
+          "dz": -0.707106781186547
+        },
+        "is_through": false,
+        "cylinders": [
+          {
+            "feature_id": "cyl_6",
+            "diameter": 0.034,
+            "radius": 0.017,
+            "depth": null,
+            "center": {
+              "x": -4.688872922439228,
+              "y": 0.413,
+              "z": 4.036176692237071
+            },
+            "axis": {
+              "dx": -0.707106781186548,
+              "dy": 0.0,
+              "dz": -0.707106781186547
+            },
+            "is_through": false,
+            "face_index": 518
+          },
+          {
+            "feature_id": "cyl_8",
+            "diameter": 0.034,
+            "radius": 0.017,
+            "depth": null,
+            "center": {
+              "x": -4.794349623854998,
+              "y": 0.413,
+              "z": 4.14165339365284
+            },
+            "axis": {
+              "dx": -0.707106781186548,
+              "dy": 0.0,
+              "dz": -0.707106781186547
+            },
+            "is_through": false,
+            "face_index": 971
+          }
+        ]
+      },
+      {
+        "hole_id": "hole_7",
+        "hole_type": "simple",
+        "primary_diameter": 0.034,
+        "primary_depth": null,
+        "counterbore_diameter": null,
+        "counterbore_depth": null,
+        "center": {
+          "x": -5.780416709171721,
+          "y": 0.413,
+          "z": 3.46259811510108
+        },
+        "axis": {
+          "dx": -1.239901e-16,
+          "dy": 0.0,
+          "dz": -1.0
+        },
+        "is_through": false,
+        "cylinders": [
+          {
+            "feature_id": "cyl_7",
+            "diameter": 0.034,
+            "radius": 0.017,
+            "depth": null,
+            "center": {
+              "x": -5.780416709171721,
+              "y": 0.413,
+              "z": 3.46259811510108
+            },
+            "axis": {
+              "dx": -1.239901e-16,
+              "dy": 0.0,
+              "dz": -1.0
+            },
+            "is_through": false,
+            "face_index": 584
+          },
+          {
+            "feature_id": "cyl_9",
+            "diameter": 0.034,
+            "radius": 0.017,
+            "depth": null,
+            "center": {
+              "x": -5.929583290828282,
+              "y": 0.413,
+              "z": 3.46259811510108
+            },
+            "axis": {
+              "dx": -1.239901e-16,
+              "dy": 0.0,
+              "dz": -1.0
+            },
+            "is_through": false,
+            "face_index": 1030
+          }
+        ]
+      },
+      {
+        "hole_id": "hole_8",
+        "hole_type": "simple",
+        "primary_diameter": 0.24,
+        "primary_depth": null,
+        "counterbore_diameter": null,
+        "counterbore_depth": null,
+        "center": {
+          "x": -6.119724577091434,
+          "y": -0.016826191998824,
+          "z": 0.0
+        },
+        "axis": {
+          "dx": 0.0,
+          "dy": 0.0,
+          "dz": 1.0
+        },
+        "is_through": false,
+        "cylinders": [
+          {
+            "feature_id": "cyl_16",
+            "diameter": 0.24,
+            "radius": 0.12,
+            "depth": null,
+            "center": {
+              "x": -6.119724577091434,
+              "y": -0.016826191998824,
+              "z": 0.0
+            },
+            "axis": {
+              "dx": 0.0,
+              "dy": 0.0,
+              "dz": 1.0
+            },
+            "is_through": false,
+            "face_index": 1687
+          }
+        ]
+      },
+      {
+        "hole_id": "hole_9",
+        "hole_type": "simple",
+        "primary_diameter": 0.24,
+        "primary_depth": null,
+        "counterbore_diameter": null,
+        "counterbore_depth": null,
+        "center": {
+          "x": 0.0,
+          "y": -0.016826191998821,
+          "z": -4.369724577091434
+        },
+        "axis": {
+          "dx": -1.0,
+          "dy": 0.0,
+          "dz": 0.0
+        },
+        "is_through": false,
+        "cylinders": [
+          {
+            "feature_id": "cyl_17",
+            "diameter": 0.24,
+            "radius": 0.12,
+            "depth": null,
+            "center": {
+              "x": 0.0,
+              "y": -0.016826191998821,
+              "z": -4.369724577091434
+            },
+            "axis": {
+              "dx": -1.0,
+              "dy": 0.0,
+              "dz": 0.0
+            },
+            "is_through": false,
+            "face_index": 1764
+          }
+        ]
+      },
+      {
+        "hole_id": "hole_10",
+        "hole_type": "simple",
+        "primary_diameter": 0.24,
+        "primary_depth": null,
+        "counterbore_diameter": null,
+        "counterbore_depth": null,
+        "center": {
+          "x": 6.119724577091434,
+          "y": -0.016826191998824,
+          "z": 0.0
+        },
+        "axis": {
+          "dx": 0.0,
+          "dy": 0.0,
+          "dz": -1.0
+        },
+        "is_through": false,
+        "cylinders": [
+          {
+            "feature_id": "cyl_18",
+            "diameter": 0.24,
+            "radius": 0.12,
+            "depth": null,
+            "center": {
+              "x": 6.119724577091434,
+              "y": -0.016826191998824,
+              "z": 0.0
+            },
+            "axis": {
+              "dx": 0.0,
+              "dy": 0.0,
+              "dz": -1.0
+            },
+            "is_through": false,
+            "face_index": 1806
+          }
+        ]
+      },
+      {
+        "hole_id": "hole_11",
+        "hole_type": "simple",
+        "primary_diameter": 0.24,
+        "primary_depth": null,
+        "counterbore_diameter": null,
+        "counterbore_depth": null,
+        "center": {
+          "x": 5.514675677283401,
+          "y": -1.347610633908548,
+          "z": -3.7646756772834
+        },
+        "axis": {
+          "dx": 0.250562807085732,
+          "dy": 0.935113126531029,
+          "dz": -0.250562807085732
+        },
+        "is_through": false,
+        "cylinders": [
+          {
+            "feature_id": "cyl_19",
+            "diameter": 0.24,
+            "radius": 0.12,
+            "depth": null,
+            "center": {
+              "x": 5.514675677283401,
+              "y": -1.347610633908548,
+              "z": -3.7646756772834
+            },
+            "axis": {
+              "dx": 0.250562807085732,
+              "dy": 0.935113126531029,
+              "dz": -0.250562807085732
+            },
+            "is_through": false,
+            "face_index": 1980
+          }
+        ]
+      },
+      {
+        "hole_id": "hole_12",
+        "hole_type": "simple",
+        "primary_diameter": 0.24,
+        "primary_depth": null,
+        "counterbore_diameter": null,
+        "counterbore_depth": null,
+        "center": {
+          "x": 5.878760711846095,
+          "y": -0.06995154665177,
+          "z": -4.128760711846095
+        },
+        "axis": {
+          "dx": -0.017449749160683,
+          "dy": -0.999695459881887,
+          "dz": 0.017449749160683
+        },
+        "is_through": false,
+        "cylinders": [
+          {
+            "feature_id": "cyl_20",
+            "diameter": 0.24,
+            "radius": 0.12,
+            "depth": null,
+            "center": {
+              "x": 5.878760711846095,
+              "y": -0.06995154665177,
+              "z": -4.128760711846095
+            },
+            "axis": {
+              "dx": -0.017449749160683,
+              "dy": -0.999695459881887,
+              "dz": 0.017449749160683
+            },
+            "is_through": false,
+            "face_index": 2012
+          },
+          {
+            "feature_id": "cyl_102",
+            "diameter": 0.25,
+            "radius": 0.125,
+            "depth": null,
+            "center": {
+              "x": 5.625000000000001,
+              "y": 0.35,
+              "z": -3.875
+            },
+            "axis": {
+              "dx": 0.0,
+              "dy": 1.0,
+              "dz": 0.0
+            },
+            "is_through": false,
+            "face_index": 7441
+          }
+        ]
+      },
+      {
+        "hole_id": "hole_13",
+        "hole_type": "counterbore",
+        "primary_diameter": 0.12,
+        "primary_depth": null,
+        "counterbore_diameter": 0.24,
+        "counterbore_depth": null,
+        "center": {
+          "x": 5.486864682541119,
+          "y": -4.489999999999999,
+          "z": 1.441987298107778
+        },
+        "axis": {
+          "dx": -2.424963e-16,
+          "dy": 0.0,
+          "dz": -1.0
+        },
+        "is_through": false,
+        "cylinders": [
+          {
+            "feature_id": "cyl_21",
+            "diameter": 0.24,
+            "radius": 0.12,
+            "depth": null,
+            "center": {
+              "x": 5.799164770017082,
+              "y": -4.63,
+              "z": 2.125
+            },
+            "axis": {
+              "dx": 0.0,
+              "dy": 0.0,
+              "dz": -1.0
+            },
+            "is_through": false,
+            "face_index": 2036
+          },
+          {
+            "feature_id": "cyl_37",
+            "diameter": 0.12,
+            "radius": 0.06,
+            "depth": null,
+            "center": {
+              "x": 5.486864682541119,
+              "y": -4.489999999999999,
+              "z": 1.441987298107778
+            },
+            "axis": {
+              "dx": -2.424963e-16,
+              "dy": 0.0,
+              "dz": -1.0
+            },
+            "is_through": false,
+            "face_index": 3795
+          }
+        ]
+      },
+      {
+        "hole_id": "hole_14",
+        "hole_type": "counterbore",
+        "primary_diameter": 0.12,
+        "primary_depth": null,
+        "counterbore_diameter": 0.24,
+        "counterbore_depth": null,
+        "center": {
+          "x": 2.316987298107779,
+          "y": -4.489999999999999,
+          "z": -3.73686468254112
+        },
+        "axis": {
+          "dx": -1.0,
+          "dy": 0.0,
+          "dz": 0.0
+        },
+        "is_through": false,
+        "cylinders": [
+          {
+            "feature_id": "cyl_22",
+            "diameter": 0.24,
+            "radius": 0.12,
+            "depth": null,
+            "center": {
+              "x": 3.0,
+              "y": -4.629999999999999,
+              "z": -4.049164770017083
+            },
+            "axis": {
+              "dx": -1.0,
+              "dy": 0.0,
+              "dz": 0.0
+            },
+            "is_through": false,
+            "face_index": 2058
+          },
+          {
+            "feature_id": "cyl_57",
+            "diameter": 0.12,
+            "radius": 0.06,
+            "depth": null,
+            "center": {
+              "x": 2.316987298107779,
+              "y": -4.489999999999999,
+              "z": -3.73686468254112
+            },
+            "axis": {
+              "dx": -1.0,
+              "dy": 0.0,
+              "dz": 0.0
+            },
+            "is_through": false,
+            "face_index": 4871
+          }
+        ]
+      },
+      {
+        "hole_id": "hole_15",
+        "hole_type": "simple",
+        "primary_diameter": 0.24,
+        "primary_depth": null,
+        "counterbore_diameter": null,
+        "counterbore_depth": null,
+        "center": {
+          "x": -5.624543687799092,
+          "y": -0.937577636537471,
+          "z": -3.874543687799094
+        },
+        "axis": {
+          "dx": -0.250562807085732,
+          "dy": 0.935113126531029,
+          "dz": -0.250562807085732
+        },
+        "is_through": false,
+        "cylinders": [
+          {
+            "feature_id": "cyl_23",
+            "diameter": 0.24,
+            "radius": 0.12,
+            "depth": null,
+            "center": {
+              "x": -5.624543687799092,
+              "y": -0.937577636537471,
+              "z": -3.874543687799094
+            },
+            "axis": {
+              "dx": -0.250562807085732,
+              "dy": 0.935113126531029,
+              "dz": -0.250562807085732
+            },
+            "is_through": false,
+            "face_index": 2212
+          }
+        ]
+      },
+      {
+        "hole_id": "hole_16",
+        "hole_type": "simple",
+        "primary_diameter": 0.24,
+        "primary_depth": null,
+        "counterbore_diameter": null,
+        "counterbore_depth": null,
+        "center": {
+          "x": -5.878227847790996,
+          "y": -0.100479307922792,
+          "z": -4.128227847790996
+        },
+        "axis": {
+          "dx": 0.017449749160683,
+          "dy": -0.999695459881887,
+          "dz": 0.017449749160683
+        },
+        "is_through": false,
+        "cylinders": [
+          {
+            "feature_id": "cyl_24",
+            "diameter": 0.24,
+            "radius": 0.12,
+            "depth": null,
+            "center": {
+              "x": -5.878227847790996,
+              "y": -0.100479307922792,
+              "z": -4.128227847790996
+            },
+            "axis": {
+              "dx": 0.017449749160683,
+              "dy": -0.999695459881887,
+              "dz": 0.017449749160683
+            },
+            "is_through": false,
+            "face_index": 2244
+          },
+          {
+            "feature_id": "cyl_104",
+            "diameter": 0.25,
+            "radius": 0.125,
+            "depth": null,
+            "center": {
+              "x": -5.624999999999999,
+              "y": 0.35,
+              "z": -3.875
+            },
+            "axis": {
+              "dx": 0.0,
+              "dy": 1.0,
+              "dz": 0.0
+            },
+            "is_through": false,
+            "face_index": 7499
+          }
+        ]
+      },
+      {
+        "hole_id": "hole_17",
+        "hole_type": "simple",
+        "primary_diameter": 0.24,
+        "primary_depth": null,
+        "counterbore_diameter": null,
+        "counterbore_depth": null,
+        "center": {
+          "x": 0.0,
+          "y": -0.016826191998821,
+          "z": 4.369724577091434
+        },
+        "axis": {
+          "dx": 1.0,
+          "dy": 0.0,
+          "dz": 0.0
+        },
+        "is_through": false,
+        "cylinders": [
+          {
+            "feature_id": "cyl_25",
+            "diameter": 0.24,
+            "radius": 0.12,
+            "depth": null,
+            "center": {
+              "x": 0.0,
+              "y": -0.016826191998821,
+              "z": 4.369724577091434
+            },
+            "axis": {
+              "dx": 1.0,
+              "dy": 0.0,
+              "dz": 0.0
+            },
+            "is_through": false,
+            "face_index": 2268
+          }
+        ]
+      },
+      {
+        "hole_id": "hole_18",
+        "hole_type": "simple",
+        "primary_diameter": 0.24,
+        "primary_depth": null,
+        "counterbore_diameter": null,
+        "counterbore_depth": null,
+        "center": {
+          "x": 5.624543687799092,
+          "y": -0.937577636537471,
+          "z": 3.874543687799094
+        },
+        "axis": {
+          "dx": 0.250562807085732,
+          "dy": 0.935113126531029,
+          "dz": 0.250562807085732
+        },
+        "is_through": false,
+        "cylinders": [
+          {
+            "feature_id": "cyl_26",
+            "diameter": 0.24,
+            "radius": 0.12,
+            "depth": null,
+            "center": {
+              "x": 5.624543687799092,
+              "y": -0.937577636537471,
+              "z": 3.874543687799094
+            },
+            "axis": {
+              "dx": 0.250562807085732,
+              "dy": 0.935113126531029,
+              "dz": 0.250562807085732
+            },
+            "is_through": false,
+            "face_index": 2442
+          }
+        ]
+      },
+      {
+        "hole_id": "hole_19",
+        "hole_type": "simple",
+        "primary_diameter": 0.24,
+        "primary_depth": null,
+        "counterbore_diameter": null,
+        "counterbore_depth": null,
+        "center": {
+          "x": 5.878227847790996,
+          "y": -0.100479307922793,
+          "z": 4.128227847790996
+        },
+        "axis": {
+          "dx": -0.017449749160683,
+          "dy": -0.999695459881887,
+          "dz": -0.017449749160683
+        },
+        "is_through": false,
+        "cylinders": [
+          {
+            "feature_id": "cyl_27",
+            "diameter": 0.24,
+            "radius": 0.12,
+            "depth": null,
+            "center": {
+              "x": 5.878227847790996,
+              "y": -0.100479307922793,
+              "z": 4.128227847790996
+            },
+            "axis": {
+              "dx": -0.017449749160683,
+              "dy": -0.999695459881887,
+              "dz": -0.017449749160683
+            },
+            "is_through": false,
+            "face_index": 2474
+          },
+          {
+            "feature_id": "cyl_105",
+            "diameter": 0.25,
+            "radius": 0.125,
+            "depth": null,
+            "center": {
+              "x": 5.625,
+              "y": 0.35,
+              "z": 3.875
+            },
+            "axis": {
+              "dx": 0.0,
+              "dy": 1.0,
+              "dz": 0.0
+            },
+            "is_through": false,
+            "face_index": 7528
+          }
+        ]
+      },
+      {
+        "hole_id": "hole_20",
+        "hole_type": "counterbore",
+        "primary_diameter": 0.12,
+        "primary_depth": null,
+        "counterbore_diameter": 0.24,
+        "counterbore_depth": null,
+        "center": {
+          "x": -5.486864682541119,
+          "y": -4.489999999999999,
+          "z": -1.441987298107781
+        },
+        "axis": {
+          "dx": 0.0,
+          "dy": 0.0,
+          "dz": 1.0
+        },
+        "is_through": false,
+        "cylinders": [
+          {
+            "feature_id": "cyl_28",
+            "diameter": 0.24,
+            "radius": 0.12,
+            "depth": null,
+            "center": {
+              "x": -5.799164770017082,
+              "y": -4.63,
+              "z": -2.125
+            },
+            "axis": {
+              "dx": 0.0,
+              "dy": 0.0,
+              "dz": 1.0
+            },
+            "is_through": false,
+            "face_index": 2498
+          },
+          {
+            "feature_id": "cyl_44",
+            "diameter": 0.12,
+            "radius": 0.06,
+            "depth": null,
+            "center": {
+              "x": -5.486864682541119,
+              "y": -4.489999999999999,
+              "z": -1.441987298107781
+            },
+            "axis": {
+              "dx": 0.0,
+              "dy": 0.0,
+              "dz": 1.0
+            },
+            "is_through": false,
+            "face_index": 4277
+          }
+        ]
+      },
+      {
+        "hole_id": "hole_21",
+        "hole_type": "counterbore",
+        "primary_diameter": 0.12,
+        "primary_depth": null,
+        "counterbore_diameter": 0.24,
+        "counterbore_depth": null,
+        "center": {
+          "x": -2.31698729810778,
+          "y": -4.489999999999999,
+          "z": 3.736864682541122
+        },
+        "axis": {
+          "dx": 1.0,
+          "dy": 0.0,
+          "dz": -3.018373e-16
+        },
+        "is_through": false,
+        "cylinders": [
+          {
+            "feature_id": "cyl_29",
+            "diameter": 0.24,
+            "radius": 0.12,
+            "depth": null,
+            "center": {
+              "x": -3.0,
+              "y": -4.629999999999999,
+              "z": 4.049164770017083
+            },
+            "axis": {
+              "dx": 1.0,
+              "dy": 0.0,
+              "dz": 0.0
+            },
+            "is_through": false,
+            "face_index": 2520
+          },
+          {
+            "feature_id": "cyl_41",
+            "diameter": 0.12,
+            "radius": 0.06,
+            "depth": null,
+            "center": {
+              "x": -2.31698729810778,
+              "y": -4.489999999999999,
+              "z": 3.736864682541122
+            },
+            "axis": {
+              "dx": 1.0,
+              "dy": 0.0,
+              "dz": -3.018373e-16
+            },
+            "is_through": false,
+            "face_index": 4132
+          }
+        ]
+      },
+      {
+        "hole_id": "hole_22",
+        "hole_type": "simple",
+        "primary_diameter": 0.24,
+        "primary_depth": null,
+        "counterbore_diameter": null,
+        "counterbore_depth": null,
+        "center": {
+          "x": -5.878760711846095,
+          "y": -0.06995154665177,
+          "z": 4.128760711846095
+        },
+        "axis": {
+          "dx": 0.017449749160683,
+          "dy": -0.999695459881887,
+          "dz": -0.017449749160683
+        },
+        "is_through": false,
+        "cylinders": [
+          {
+            "feature_id": "cyl_30",
+            "diameter": 0.24,
+            "radius": 0.12,
+            "depth": null,
+            "center": {
+              "x": -5.878760711846095,
+              "y": -0.06995154665177,
+              "z": 4.128760711846095
+            },
+            "axis": {
+              "dx": 0.017449749160683,
+              "dy": -0.999695459881887,
+              "dz": -0.017449749160683
+            },
+            "is_through": false,
+            "face_index": 2674
+          },
+          {
+            "feature_id": "cyl_103",
+            "diameter": 0.25,
+            "radius": 0.125,
+            "depth": null,
+            "center": {
+              "x": -5.625,
+              "y": 0.35,
+              "z": 3.875
+            },
+            "axis": {
+              "dx": 0.0,
+              "dy": 1.0,
+              "dz": 0.0
+            },
+            "is_through": false,
+            "face_index": 7470
+          }
+        ]
+      },
+      {
+        "hole_id": "hole_23",
+        "hole_type": "simple",
+        "primary_diameter": 0.24,
+        "primary_depth": null,
+        "counterbore_diameter": null,
+        "counterbore_depth": null,
+        "center": {
+          "x": -5.514675677283401,
+          "y": -1.347610633908548,
+          "z": 3.7646756772834
+        },
+        "axis": {
+          "dx": -0.250562807085732,
+          "dy": 0.935113126531029,
+          "dz": 0.250562807085732
+        },
+        "is_through": false,
+        "cylinders": [
+          {
+            "feature_id": "cyl_31",
+            "diameter": 0.24,
+            "radius": 0.12,
+            "depth": null,
+            "center": {
+              "x": -5.514675677283401,
+              "y": -1.347610633908548,
+              "z": 3.7646756772834
+            },
+            "axis": {
+              "dx": -0.250562807085732,
+              "dy": 0.935113126531029,
+              "dz": 0.250562807085732
+            },
+            "is_through": false,
+            "face_index": 2698
+          }
+        ]
+      },
+      {
+        "hole_id": "hole_24",
+        "hole_type": "counterbore",
+        "primary_diameter": 0.12,
+        "primary_depth": null,
+        "counterbore_diameter": 0.281,
+        "counterbore_depth": null,
+        "center": {
+          "x": 4.609089915582467,
+          "y": 0.496116095965393,
+          "z": -3.823897662735827
+        },
+        "axis": {
+          "dx": -0.007228834559801,
+          "dy": -0.999821570769976,
+          "dz": 0.017451950434422
+        },
+        "is_through": false,
+        "cylinders": [
+          {
+            "feature_id": "cyl_32",
+            "diameter": 0.12,
+            "radius": 0.06,
+            "depth": null,
+            "center": {
+              "x": 4.609089915582467,
+              "y": 0.496116095965393,
+              "z": -3.823897662735827
+            },
+            "axis": {
+              "dx": -0.007228834559801,
+              "dy": -0.999821570769976,
+              "dz": 0.017451950434422
+            },
+            "is_through": false,
+            "face_index": 3085
+          },
+          {
+            "feature_id": "cyl_99",
+            "diameter": 0.281,
+            "radius": 0.1405,
+            "depth": null,
+            "center": {
+              "x": 4.750000000000001,
+              "y": -20.10006282578681,
+              "z": -3.2
+            },
+            "axis": {
+              "dx": 0.0,
+              "dy": 1.0,
+              "dz": 0.0
+            },
+            "is_through": false,
+            "face_index": 6974
+          }
+        ]
+      },
+      {
+        "hole_id": "hole_25",
+        "hole_type": "simple",
+        "primary_diameter": 0.12,
+        "primary_depth": null,
+        "counterbore_diameter": null,
+        "counterbore_depth": null,
+        "center": {
+          "x": 4.697603425903661,
+          "y": -4.04,
+          "z": 3.623409266748642
+        },
+        "axis": {
+          "dx": -0.707106781186547,
+          "dy": 0.0,
+          "dz": 0.707106781186548
+        },
+        "is_through": false,
+        "cylinders": [
+          {
+            "feature_id": "cyl_33",
+            "diameter": 0.12,
+            "radius": 0.06,
+            "depth": null,
+            "center": {
+              "x": 4.697603425903661,
+              "y": -4.04,
+              "z": 3.623409266748642
+            },
+            "axis": {
+              "dx": -0.707106781186547,
+              "dy": 0.0,
+              "dz": 0.707106781186548
+            },
+            "is_through": false,
+            "face_index": 3362
+          }
+        ]
+      },
+      {
+        "hole_id": "hole_26",
+        "hole_type": "simple",
+        "primary_diameter": 0.12,
+        "primary_depth": null,
+        "counterbore_diameter": null,
+        "counterbore_depth": null,
+        "center": {
+          "x": 5.532786891194853,
+          "y": -1.859118428227843,
+          "z": -2.729105593649096
+        },
+        "axis": {
+          "dx": -0.017449749160683,
+          "dy": -0.999695459881887,
+          "dz": 0.017449749160683
+        },
+        "is_through": false,
+        "cylinders": [
+          {
+            "feature_id": "cyl_34",
+            "diameter": 0.12,
+            "radius": 0.06,
+            "depth": null,
+            "center": {
+              "x": 5.532786891194853,
+              "y": -1.859118428227843,
+              "z": -2.729105593649096
+            },
+            "axis": {
+              "dx": -0.017449749160683,
+              "dy": -0.999695459881887,
+              "dz": 0.017449749160683
+            },
+            "is_through": false,
+            "face_index": 3484
+          },
+          {
+            "feature_id": "cyl_78",
+            "diameter": 0.12,
+            "radius": 0.06,
+            "depth": null,
+            "center": {
+              "x": 5.573623035051596,
+              "y": 0.480382686473129,
+              "z": -2.858976161071059
+            },
+            "axis": {
+              "dx": -0.017451950434422,
+              "dy": -0.999821570769976,
+              "dz": 0.007228834559801
+            },
+            "is_through": false,
+            "face_index": 5567
+          }
+        ]
+      },
+      {
+        "hole_id": "hole_27",
+        "hole_type": "simple",
+        "primary_diameter": 0.12,
+        "primary_depth": null,
+        "counterbore_diameter": null,
+        "counterbore_depth": null,
+        "center": {
+          "x": -4.697603425903663,
+          "y": -4.039999999999999,
+          "z": -3.623409266748644
+        },
+        "axis": {
+          "dx": 0.707106781186548,
+          "dy": 0.0,
+          "dz": -0.707106781186548
+        },
+        "is_through": false,
+        "cylinders": [
+          {
+            "feature_id": "cyl_35",
+            "diameter": 0.12,
+            "radius": 0.06,
+            "depth": null,
+            "center": {
+              "x": -4.697603425903663,
+              "y": -4.039999999999999,
+              "z": -3.623409266748644
+            },
+            "axis": {
+              "dx": 0.707106781186548,
+              "dy": 0.0,
+              "dz": -0.707106781186548
+            },
+            "is_through": false,
+            "face_index": 3541
+          }
+        ]
+      },
+      {
+        "hole_id": "hole_28",
+        "hole_type": "simple",
+        "primary_diameter": 0.12,
+        "primary_depth": null,
+        "counterbore_diameter": null,
+        "counterbore_depth": null,
+        "center": {
+          "x": -5.573897662735827,
+          "y": 0.496116095965393,
+          "z": -2.85908991558247
+        },
+        "axis": {
+          "dx": 0.017451950434422,
+          "dy": -0.999821570769976,
+          "dz": 0.007228834559801
+        },
+        "is_through": false,
+        "cylinders": [
+          {
+            "feature_id": "cyl_36",
+            "diameter": 0.12,
+            "radius": 0.06,
+            "depth": null,
+            "center": {
+              "x": -5.573897662735827,
+              "y": 0.496116095965393,
+              "z": -2.85908991558247
+            },
+            "axis": {
+              "dx": 0.017451950434422,
+              "dy": -0.999821570769976,
+              "dz": 0.007228834559801
+            },
+            "is_through": false,
+            "face_index": 3563
+          },
+          {
+            "feature_id": "cyl_56",
+            "diameter": 0.12,
+            "radius": 0.06,
+            "depth": null,
+            "center": {
+              "x": -5.533912444590802,
+              "y": -1.794635517360607,
+              "z": -2.730231147045043
+            },
+            "axis": {
+              "dx": -0.017449749160683,
+              "dy": 0.999695459881887,
+              "dz": -0.017449749160683
+            },
+            "is_through": false,
+            "face_index": 4849
+          }
+        ]
+      },
+      {
+        "hole_id": "hole_29",
+        "hole_type": "simple",
+        "primary_diameter": 0.12,
+        "primary_depth": null,
+        "counterbore_diameter": null,
+        "counterbore_depth": null,
+        "center": {
+          "x": 3.728801099903326,
+          "y": -1.876562863239856,
+          "z": 3.782482397449083
+        },
+        "axis": {
+          "dx": -0.017449749160683,
+          "dy": -0.999695459881887,
+          "dz": -0.017449749160683
+        },
+        "is_through": false,
+        "cylinders": [
+          {
+            "feature_id": "cyl_38",
+            "diameter": 0.12,
+            "radius": 0.06,
+            "depth": null,
+            "center": {
+              "x": 3.728801099903326,
+              "y": -1.876562863239856,
+              "z": 3.782482397449083
+            },
+            "axis": {
+              "dx": -0.017449749160683,
+              "dy": -0.999695459881887,
+              "dz": -0.017449749160683
+            },
+            "is_through": false,
+            "face_index": 3952
+          }
+        ]
+      },
+      {
+        "hole_id": "hole_30",
+        "hole_type": "simple",
+        "primary_diameter": 0.12,
+        "primary_depth": null,
+        "counterbore_diameter": null,
+        "counterbore_depth": null,
+        "center": {
+          "x": 3.683183384995363,
+          "y": -4.489999999999999,
+          "z": 1.625000000000002
+        },
+        "axis": {
+          "dx": 7.992607e-16,
+          "dy": 0.0,
+          "dz": -1.0
+        },
+        "is_through": false,
+        "cylinders": [
+          {
+            "feature_id": "cyl_39",
+            "diameter": 0.12,
+            "radius": 0.06,
+            "depth": null,
+            "center": {
+              "x": 3.683183384995363,
+              "y": -4.489999999999999,
+              "z": 1.625000000000002
+            },
+            "axis": {
+              "dx": 7.992607e-16,
+              "dy": 0.0,
+              "dz": -1.0
+            },
+            "is_through": false,
+            "face_index": 3974
+          },
+          {
+            "feature_id": "cyl_65",
+            "diameter": 0.12,
+            "radius": 0.06,
+            "depth": null,
+            "center": {
+              "x": 3.808961835786943,
+              "y": -4.160000000000001,
+              "z": 3.363825226451398
+            },
+            "axis": {
+              "dx": -7.992607e-16,
+              "dy": 0.0,
+              "dz": 1.0
+            },
+            "is_through": false,
+            "face_index": 5135
+          },
+          {
+            "feature_id": "cyl_68",
+            "diameter": 0.12,
+            "radius": 0.06,
+            "depth": null,
+            "center": {
+              "x": 3.68318338499536,
+              "y": -4.489999999999999,
+              "z": -2.0625
+            },
+            "axis": {
+              "dx": 0.0,
+              "dy": 0.0,
+              "dz": -1.0
+            },
+            "is_through": false,
+            "face_index": 5245
+          },
+          {
+            "feature_id": "cyl_74",
+            "diameter": 0.12,
+            "radius": 0.06,
+            "depth": null,
+            "center": {
+              "x": 3.808961835786942,
+              "y": -4.159999999999999,
+              "z": -3.801325226451399
+            },
+            "axis": {
+              "dx": 0.0,
+              "dy": 0.0,
+              "dz": -1.0
+            },
+            "is_through": false,
+            "face_index": 5441
+          }
+        ]
+      },
+      {
+        "hole_id": "hole_31",
+        "hole_type": "simple",
+        "primary_diameter": 0.12,
+        "primary_depth": null,
+        "counterbore_diameter": null,
+        "counterbore_depth": null,
+        "center": {
+          "x": 2.9375,
+          "y": -4.489999999999999,
+          "z": 2.683183384995361
+        },
+        "axis": {
+          "dx": 1.0,
+          "dy": 0.0,
+          "dz": 0.0
+        },
+        "is_through": false,
+        "cylinders": [
+          {
+            "feature_id": "cyl_40",
+            "diameter": 0.12,
+            "radius": 0.06,
+            "depth": null,
+            "center": {
+              "x": 2.9375,
+              "y": -4.489999999999999,
+              "z": 2.683183384995361
+            },
+            "axis": {
+              "dx": 1.0,
+              "dy": 0.0,
+              "dz": 0.0
+            },
+            "is_through": false,
+            "face_index": 4040
+          },
+          {
+            "feature_id": "cyl_42",
+            "diameter": 0.12,
+            "radius": 0.06,
+            "depth": null,
+            "center": {
+              "x": -2.125000000000001,
+              "y": -4.489999999999999,
+              "z": 2.683183384995361
+            },
+            "axis": {
+              "dx": 1.0,
+              "dy": 0.0,
+              "dz": 0.0
+            },
+            "is_through": false,
+            "face_index": 4189
+          },
+          {
+            "feature_id": "cyl_51",
+            "diameter": 0.12,
+            "radius": 0.06,
+            "depth": null,
+            "center": {
+              "x": -4.563019385606417,
+              "y": -4.159999999999999,
+              "z": 2.808961835786942
+            },
+            "axis": {
+              "dx": 1.0,
+              "dy": 0.0,
+              "dz": 0.0
+            },
+            "is_through": false,
+            "face_index": 4641
+          },
+          {
+            "feature_id": "cyl_64",
+            "diameter": 0.12,
+            "radius": 0.06,
+            "depth": null,
+            "center": {
+              "x": 5.375519385606418,
+              "y": -4.160000000000001,
+              "z": 2.808961835786942
+            },
+            "axis": {
+              "dx": -1.0,
+              "dy": 0.0,
+              "dz": 0.0
+            },
+            "is_through": false,
+            "face_index": 5069
+          }
+        ]
+      },
+      {
+        "hole_id": "hole_32",
+        "hole_type": "simple",
+        "primary_diameter": 0.12,
+        "primary_depth": null,
+        "counterbore_diameter": null,
+        "counterbore_depth": null,
+        "center": {
+          "x": -3.683183384995362,
+          "y": -4.489999999999999,
+          "z": 2.062500000000002
+        },
+        "axis": {
+          "dx": 7.992607e-16,
+          "dy": 0.0,
+          "dz": 1.0
+        },
+        "is_through": false,
+        "cylinders": [
+          {
+            "feature_id": "cyl_43",
+            "diameter": 0.12,
+            "radius": 0.06,
+            "depth": null,
+            "center": {
+              "x": -3.683183384995362,
+              "y": -4.489999999999999,
+              "z": 2.062500000000002
+            },
+            "axis": {
+              "dx": 7.992607e-16,
+              "dy": 0.0,
+              "dz": 1.0
+            },
+            "is_through": false,
+            "face_index": 4255
+          },
+          {
+            "feature_id": "cyl_52",
+            "diameter": 0.12,
+            "radius": 0.06,
+            "depth": null,
+            "center": {
+              "x": -3.808961835786942,
+              "y": -4.159999999999999,
+              "z": 3.801325226451398
+            },
+            "axis": {
+              "dx": 7.992607e-16,
+              "dy": 0.0,
+              "dz": 1.0
+            },
+            "is_through": false,
+            "face_index": 4707
+          },
+          {
+            "feature_id": "cyl_54",
+            "diameter": 0.12,
+            "radius": 0.06,
+            "depth": null,
+            "center": {
+              "x": -3.683183384995362,
+              "y": -4.489999999999999,
+              "z": -1.625
+            },
+            "axis": {
+              "dx": 0.0,
+              "dy": 0.0,
+              "dz": 1.0
+            },
+            "is_through": false,
+            "face_index": 4761
+          },
+          {
+            "feature_id": "cyl_59",
+            "diameter": 0.12,
+            "radius": 0.06,
+            "depth": null,
+            "center": {
+              "x": -3.808961835786943,
+              "y": -4.159999999999999,
+              "z": -3.363825226451398
+            },
+            "axis": {
+              "dx": 0.0,
+              "dy": 0.0,
+              "dz": 1.0
+            },
+            "is_through": false,
+            "face_index": 4915
+          }
+        ]
+      },
+      {
+        "hole_id": "hole_33",
+        "hole_type": "simple",
+        "primary_diameter": 0.12,
+        "primary_depth": null,
+        "counterbore_diameter": null,
+        "counterbore_depth": null,
+        "center": {
+          "x": -3.730345332199708,
+          "y": -1.788093854231102,
+          "z": 3.784026629745469
+        },
+        "axis": {
+          "dx": -0.017449749160683,
+          "dy": 0.999695459881887,
+          "dz": 0.017449749160683
+        },
+        "is_through": false,
+        "cylinders": [
+          {
+            "feature_id": "cyl_45",
+            "diameter": 0.12,
+            "radius": 0.06,
+            "depth": null,
+            "center": {
+              "x": -3.730345332199708,
+              "y": -1.788093854231102,
+              "z": 3.784026629745469
+            },
+            "axis": {
+              "dx": -0.017449749160683,
+              "dy": 0.999695459881887,
+              "dz": 0.017449749160683
+            },
+            "is_through": false,
+            "face_index": 4364
+          }
+        ]
+      },
+      {
+        "hole_id": "hole_34",
+        "hole_type": "simple",
+        "primary_diameter": 0.12,
+        "primary_depth": null,
+        "counterbore_diameter": null,
+        "counterbore_depth": null,
+        "center": {
+          "x": -4.755006683714198,
+          "y": -4.039999999999999,
+          "z": 3.74471946175882
+        },
+        "axis": {
+          "dx": -1.0,
+          "dy": 0.0,
+          "dz": 3.018373e-16
+        },
+        "is_through": false,
+        "cylinders": [
+          {
+            "feature_id": "cyl_46",
+            "diameter": 0.12,
+            "radius": 0.06,
+            "depth": null,
+            "center": {
+              "x": -4.755006683714198,
+              "y": -4.039999999999999,
+              "z": 3.74471946175882
+            },
+            "axis": {
+              "dx": -1.0,
+              "dy": 0.0,
+              "dz": 3.018373e-16
+            },
+            "is_through": false,
+            "face_index": 4421
+          },
+          {
+            "feature_id": "cyl_63",
+            "diameter": 0.12,
+            "radius": 0.06,
+            "depth": null,
+            "center": {
+              "x": 0.121032087498637,
+              "y": -4.04,
+              "z": 3.744719461758819
+            },
+            "axis": {
+              "dx": -1.0,
+              "dy": 0.0,
+              "dz": 3.018373e-16
+            },
+            "is_through": false,
+            "face_index": 5047
+          }
+        ]
+      },
+      {
+        "hole_id": "hole_35",
+        "hole_type": "simple",
+        "primary_diameter": 0.12,
+        "primary_depth": null,
+        "counterbore_diameter": null,
+        "counterbore_depth": null,
+        "center": {
+          "x": -5.532786891194855,
+          "y": -1.859118428227843,
+          "z": 2.729105593649096
+        },
+        "axis": {
+          "dx": 0.017449749160683,
+          "dy": -0.999695459881887,
+          "dz": -0.017449749160683
+        },
+        "is_through": false,
+        "cylinders": [
+          {
+            "feature_id": "cyl_47",
+            "diameter": 0.12,
+            "radius": 0.06,
+            "depth": null,
+            "center": {
+              "x": -5.532786891194855,
+              "y": -1.859118428227843,
+              "z": 2.729105593649096
+            },
+            "axis": {
+              "dx": 0.017449749160683,
+              "dy": -0.999695459881887,
+              "dz": -0.017449749160683
+            },
+            "is_through": false,
+            "face_index": 4508
+          },
+          {
+            "feature_id": "cyl_49",
+            "diameter": 0.12,
+            "radius": 0.06,
+            "depth": null,
+            "center": {
+              "x": -5.573623035051597,
+              "y": 0.480382686473129,
+              "z": 2.858976161071061
+            },
+            "axis": {
+              "dx": 0.017451950434422,
+              "dy": -0.999821570769976,
+              "dz": -0.007228834559801
+            },
+            "is_through": false,
+            "face_index": 4587
+          }
+        ]
+      },
+      {
+        "hole_id": "hole_36",
+        "hole_type": "simple",
+        "primary_diameter": 0.12,
+        "primary_depth": null,
+        "counterbore_diameter": null,
+        "counterbore_depth": null,
+        "center": {
+          "x": -5.494719461758818,
+          "y": -4.039999999999999,
+          "z": 0.296837928343618
+        },
+        "axis": {
+          "dx": 0.0,
+          "dy": 0.0,
+          "dz": -1.0
+        },
+        "is_through": false,
+        "cylinders": [
+          {
+            "feature_id": "cyl_48",
+            "diameter": 0.12,
+            "radius": 0.06,
+            "depth": null,
+            "center": {
+              "x": -5.494719461758818,
+              "y": -4.039999999999999,
+              "z": 0.296837928343618
+            },
+            "axis": {
+              "dx": 0.0,
+              "dy": 0.0,
+              "dz": -1.0
+            },
+            "is_through": false,
+            "face_index": 4565
+          },
+          {
+            "feature_id": "cyl_61",
+            "diameter": 0.12,
+            "radius": 0.06,
+            "depth": null,
+            "center": {
+              "x": -5.494719461758818,
+              "y": -4.039999999999999,
+              "z": -3.180812524559179
+            },
+            "axis": {
+              "dx": 0.0,
+              "dy": 0.0,
+              "dz": -1.0
+            },
+            "is_through": false,
+            "face_index": 5003
+          }
+        ]
+      },
+      {
+        "hole_id": "hole_37",
+        "hole_type": "simple",
+        "primary_diameter": 0.12,
+        "primary_depth": null,
+        "counterbore_diameter": null,
+        "counterbore_depth": null,
+        "center": {
+          "x": -5.197603425903663,
+          "y": -4.039999999999999,
+          "z": 3.123409266748647
+        },
+        "axis": {
+          "dx": -0.707106781186548,
+          "dy": 0.0,
+          "dz": -0.707106781186547
+        },
+        "is_through": false,
+        "cylinders": [
+          {
+            "feature_id": "cyl_50",
+            "diameter": 0.12,
+            "radius": 0.06,
+            "depth": null,
+            "center": {
+              "x": -5.197603425903663,
+              "y": -4.039999999999999,
+              "z": 3.123409266748647
+            },
+            "axis": {
+              "dx": -0.707106781186548,
+              "dy": 0.0,
+              "dz": -0.707106781186547
+            },
+            "is_through": false,
+            "face_index": 4619
+          }
+        ]
+      },
+      {
+        "hole_id": "hole_38",
+        "hole_type": "counterbore",
+        "primary_diameter": 0.12,
+        "primary_depth": null,
+        "counterbore_diameter": 0.281,
+        "counterbore_depth": null,
+        "center": {
+          "x": -4.609089915582469,
+          "y": 0.496116095965393,
+          "z": 3.823897662735829
+        },
+        "axis": {
+          "dx": 0.007228834559801,
+          "dy": -0.999821570769976,
+          "dz": -0.017451950434422
+        },
+        "is_through": false,
+        "cylinders": [
+          {
+            "feature_id": "cyl_53",
+            "diameter": 0.12,
+            "radius": 0.06,
+            "depth": null,
+            "center": {
+              "x": -4.609089915582469,
+              "y": 0.496116095965393,
+              "z": 3.823897662735829
+            },
+            "axis": {
+              "dx": 0.007228834559801,
+              "dy": -0.999821570769976,
+              "dz": -0.017451950434422
+            },
+            "is_through": false,
+            "face_index": 4729
+          },
+          {
+            "feature_id": "cyl_95",
+            "diameter": 0.281,
+            "radius": 0.1405,
+            "depth": null,
+            "center": {
+              "x": -4.749999999999999,
+              "y": -20.10006282578681,
+              "z": 3.199999999999999
+            },
+            "axis": {
+              "dx": 0.0,
+              "dy": 1.0,
+              "dz": 0.0
+            },
+            "is_through": false,
+            "face_index": 6854
+          }
+        ]
+      },
+      {
+        "hole_id": "hole_39",
+        "hole_type": "simple",
+        "primary_diameter": 0.12,
+        "primary_depth": null,
+        "counterbore_diameter": null,
+        "counterbore_depth": null,
+        "center": {
+          "x": -2.937500000000001,
+          "y": -4.489999999999999,
+          "z": -2.683183384995362
+        },
+        "axis": {
+          "dx": -1.0,
+          "dy": 0.0,
+          "dz": 2.151856e-16
+        },
+        "is_through": false,
+        "cylinders": [
+          {
+            "feature_id": "cyl_55",
+            "diameter": 0.12,
+            "radius": 0.06,
+            "depth": null,
+            "center": {
+              "x": -2.937500000000001,
+              "y": -4.489999999999999,
+              "z": -2.683183384995362
+            },
+            "axis": {
+              "dx": -1.0,
+              "dy": 0.0,
+              "dz": 2.151856e-16
+            },
+            "is_through": false,
+            "face_index": 4827
+          },
+          {
+            "feature_id": "cyl_60",
+            "diameter": 0.12,
+            "radius": 0.06,
+            "depth": null,
+            "center": {
+              "x": -5.375519385606418,
+              "y": -4.159999999999999,
+              "z": -2.808961835786942
+            },
+            "axis": {
+              "dx": -1.0,
+              "dy": 0.0,
+              "dz": 2.151856e-16
+            },
+            "is_through": false,
+            "face_index": 4981
+          },
+          {
+            "feature_id": "cyl_67",
+            "diameter": 0.12,
+            "radius": 0.06,
+            "depth": null,
+            "center": {
+              "x": 2.124999999999999,
+              "y": -4.489999999999999,
+              "z": -2.683183384995362
+            },
+            "axis": {
+              "dx": -1.0,
+              "dy": 0.0,
+              "dz": 0.0
+            },
+            "is_through": false,
+            "face_index": 5179
+          },
+          {
+            "feature_id": "cyl_73",
+            "diameter": 0.12,
+            "radius": 0.06,
+            "depth": null,
+            "center": {
+              "x": 4.563019385606416,
+              "y": -4.159999999999999,
+              "z": -2.808961835786943
+            },
+            "axis": {
+              "dx": -1.0,
+              "dy": 0.0,
+              "dz": 0.0
+            },
+            "is_through": false,
+            "face_index": 5375
+          }
+        ]
+      },
+      {
+        "hole_id": "hole_40",
+        "hole_type": "simple",
+        "primary_diameter": 0.12,
+        "primary_depth": null,
+        "counterbore_diameter": null,
+        "counterbore_depth": null,
+        "center": {
+          "x": -3.728801099903326,
+          "y": -1.876562863239857,
+          "z": -3.782482397449084
+        },
+        "axis": {
+          "dx": 0.017449749160683,
+          "dy": -0.999695459881887,
+          "dz": 0.017449749160683
+        },
+        "is_through": false,
+        "cylinders": [
+          {
+            "feature_id": "cyl_58",
+            "diameter": 0.12,
+            "radius": 0.06,
+            "depth": null,
+            "center": {
+              "x": -3.728801099903326,
+              "y": -1.876562863239857,
+              "z": -3.782482397449084
+            },
+            "axis": {
+              "dx": 0.017449749160683,
+              "dy": -0.999695459881887,
+              "dz": 0.017449749160683
+            },
+            "is_through": false,
+            "face_index": 4893
+          }
+        ]
+      },
+      {
+        "hole_id": "hole_41",
+        "hole_type": "simple",
+        "primary_diameter": 0.12,
+        "primary_depth": null,
+        "counterbore_diameter": null,
+        "counterbore_depth": null,
+        "center": {
+          "x": 5.533912444590802,
+          "y": -1.794635517360607,
+          "z": 2.730231147045043
+        },
+        "axis": {
+          "dx": 0.017449749160683,
+          "dy": 0.999695459881887,
+          "dz": 0.017449749160683
+        },
+        "is_through": false,
+        "cylinders": [
+          {
+            "feature_id": "cyl_62",
+            "diameter": 0.12,
+            "radius": 0.06,
+            "depth": null,
+            "center": {
+              "x": 5.533912444590802,
+              "y": -1.794635517360607,
+              "z": 2.730231147045043
+            },
+            "axis": {
+              "dx": 0.017449749160683,
+              "dy": 0.999695459881887,
+              "dz": 0.017449749160683
+            },
+            "is_through": false,
+            "face_index": 5025
+          },
+          {
+            "feature_id": "cyl_77",
+            "diameter": 0.12,
+            "radius": 0.06,
+            "depth": null,
+            "center": {
+              "x": 5.573897662735827,
+              "y": 0.496116095965393,
+              "z": 2.859089915582466
+            },
+            "axis": {
+              "dx": -0.017451950434422,
+              "dy": -0.999821570769976,
+              "dz": -0.007228834559801
+            },
+            "is_through": false,
+            "face_index": 5535
+          }
+        ]
+      },
+      {
+        "hole_id": "hole_42",
+        "hole_type": "simple",
+        "primary_diameter": 0.12,
+        "primary_depth": null,
+        "counterbore_diameter": null,
+        "counterbore_depth": null,
+        "center": {
+          "x": -0.121032087498638,
+          "y": -4.039999999999999,
+          "z": -3.744719461758818
+        },
+        "axis": {
+          "dx": 1.0,
+          "dy": 0.0,
+          "dz": 0.0
+        },
+        "is_through": false,
+        "cylinders": [
+          {
+            "feature_id": "cyl_66",
+            "diameter": 0.12,
+            "radius": 0.06,
+            "depth": null,
+            "center": {
+              "x": -0.121032087498638,
+              "y": -4.039999999999999,
+              "z": -3.744719461758818
+            },
+            "axis": {
+              "dx": 1.0,
+              "dy": 0.0,
+              "dz": 0.0
+            },
+            "is_through": false,
+            "face_index": 5157
+          },
+          {
+            "feature_id": "cyl_75",
+            "diameter": 0.12,
+            "radius": 0.06,
+            "depth": null,
+            "center": {
+              "x": 4.755006683714196,
+              "y": -4.039999999999999,
+              "z": -3.744719461758819
+            },
+            "axis": {
+              "dx": 1.0,
+              "dy": 0.0,
+              "dz": 0.0
+            },
+            "is_through": false,
+            "face_index": 5463
+          }
+        ]
+      },
+      {
+        "hole_id": "hole_43",
+        "hole_type": "simple",
+        "primary_diameter": 0.12,
+        "primary_depth": null,
+        "counterbore_diameter": null,
+        "counterbore_depth": null,
+        "center": {
+          "x": 3.730345332199707,
+          "y": -1.788093854231102,
+          "z": -3.784026629745467
+        },
+        "axis": {
+          "dx": 0.017449749160683,
+          "dy": 0.999695459881887,
+          "dz": -0.017449749160683
+        },
+        "is_through": false,
+        "cylinders": [
+          {
+            "feature_id": "cyl_69",
+            "diameter": 0.12,
+            "radius": 0.06,
+            "depth": null,
+            "center": {
+              "x": 3.730345332199707,
+              "y": -1.788093854231102,
+              "z": -3.784026629745467
+            },
+            "axis": {
+              "dx": 0.017449749160683,
+              "dy": 0.999695459881887,
+              "dz": -0.017449749160683
+            },
+            "is_through": false,
+            "face_index": 5267
+          }
+        ]
+      },
+      {
+        "hole_id": "hole_44",
+        "hole_type": "simple",
+        "primary_diameter": 0.12,
+        "primary_depth": null,
+        "counterbore_diameter": null,
+        "counterbore_depth": null,
+        "center": {
+          "x": 5.494719461758818,
+          "y": -4.039999999999999,
+          "z": 3.180812524559177
+        },
+        "axis": {
+          "dx": 2.424963e-16,
+          "dy": 0.0,
+          "dz": 1.0
+        },
+        "is_through": false,
+        "cylinders": [
+          {
+            "feature_id": "cyl_70",
+            "diameter": 0.12,
+            "radius": 0.06,
+            "depth": null,
+            "center": {
+              "x": 5.494719461758818,
+              "y": -4.039999999999999,
+              "z": 3.180812524559177
+            },
+            "axis": {
+              "dx": 2.424963e-16,
+              "dy": 0.0,
+              "dz": 1.0
+            },
+            "is_through": false,
+            "face_index": 5289
+          },
+          {
+            "feature_id": "cyl_76",
+            "diameter": 0.12,
+            "radius": 0.06,
+            "depth": null,
+            "center": {
+              "x": 5.494719461758817,
+              "y": -4.039999999999999,
+              "z": -0.29683792834362
+            },
+            "axis": {
+              "dx": 2.424963e-16,
+              "dy": 0.0,
+              "dz": 1.0
+            },
+            "is_through": false,
+            "face_index": 5494
+          }
+        ]
+      },
+      {
+        "hole_id": "hole_45",
+        "hole_type": "counterbore",
+        "primary_diameter": 0.12,
+        "primary_depth": null,
+        "counterbore_diameter": 0.281,
+        "counterbore_depth": null,
+        "center": {
+          "x": 4.608884712985145,
+          "y": 0.4677344832054,
+          "z": 3.823402259842333
+        },
+        "axis": {
+          "dx": -0.007228834559801,
+          "dy": -0.999821570769976,
+          "dz": -0.017451950434422
+        },
+        "is_through": false,
+        "cylinders": [
+          {
+            "feature_id": "cyl_71",
+            "diameter": 0.12,
+            "radius": 0.06,
+            "depth": null,
+            "center": {
+              "x": 4.608884712985145,
+              "y": 0.4677344832054,
+              "z": 3.823402259842333
+            },
+            "axis": {
+              "dx": -0.007228834559801,
+              "dy": -0.999821570769976,
+              "dz": -0.017451950434422
+            },
+            "is_through": false,
+            "face_index": 5311
+          },
+          {
+            "feature_id": "cyl_101",
+            "diameter": 0.281,
+            "radius": 0.1405,
+            "depth": null,
+            "center": {
+              "x": 4.750000000000001,
+              "y": -20.10006282578681,
+              "z": 3.199999999999999
+            },
+            "axis": {
+              "dx": 0.0,
+              "dy": 1.0,
+              "dz": 0.0
+            },
+            "is_through": false,
+            "face_index": 7034
+          }
+        ]
+      },
+      {
+        "hole_id": "hole_46",
+        "hole_type": "counterbore",
+        "primary_diameter": 0.12,
+        "primary_depth": null,
+        "counterbore_diameter": 0.281,
+        "counterbore_depth": null,
+        "center": {
+          "x": -4.608884712985145,
+          "y": 0.4677344832054,
+          "z": -3.823402259842335
+        },
+        "axis": {
+          "dx": 0.007228834559801,
+          "dy": -0.999821570769976,
+          "dz": 0.017451950434422
+        },
+        "is_through": false,
+        "cylinders": [
+          {
+            "feature_id": "cyl_72",
+            "diameter": 0.12,
+            "radius": 0.06,
+            "depth": null,
+            "center": {
+              "x": -4.608884712985145,
+              "y": 0.4677344832054,
+              "z": -3.823402259842335
+            },
+            "axis": {
+              "dx": 0.007228834559801,
+              "dy": -0.999821570769976,
+              "dz": 0.017451950434422
+            },
+            "is_through": false,
+            "face_index": 5343
+          },
+          {
+            "feature_id": "cyl_97",
+            "diameter": 0.281,
+            "radius": 0.1405,
+            "depth": null,
+            "center": {
+              "x": -4.749999999999999,
+              "y": -20.10006282578681,
+              "z": -3.2
+            },
+            "axis": {
+              "dx": 0.0,
+              "dy": 1.0,
+              "dz": 0.0
+            },
+            "is_through": false,
+            "face_index": 6914
+          }
+        ]
+      },
+      {
+        "hole_id": "hole_47",
+        "hole_type": "simple",
+        "primary_diameter": 0.173,
+        "primary_depth": null,
+        "counterbore_diameter": null,
+        "counterbore_depth": null,
+        "center": {
+          "x": -2.8,
+          "y": -1.244700989011878,
+          "z": 11.774226420638882
+        },
+        "axis": {
+          "dx": 0.0,
+          "dy": -0.017452406437284,
+          "dz": -0.999847695156391
+        },
+        "is_through": false,
+        "cylinders": [
+          {
+            "feature_id": "cyl_79",
+            "diameter": 0.173,
+            "radius": 0.0865,
+            "depth": null,
+            "center": {
+              "x": -2.8,
+              "y": -1.244700989011878,
+              "z": 11.774226420638882
+            },
+            "axis": {
+              "dx": 0.0,
+              "dy": -0.017452406437284,
+              "dz": -0.999847695156391
+            },
+            "is_through": false,
+            "face_index": 6055
+          }
+        ]
+      },
+      {
+        "hole_id": "hole_48",
+        "hole_type": "simple",
+        "primary_diameter": 0.173,
+        "primary_depth": null,
+        "counterbore_diameter": null,
+        "counterbore_depth": null,
+        "center": {
+          "x": -2.8,
+          "y": -0.294845678613307,
+          "z": 11.757646634523462
+        },
+        "axis": {
+          "dx": 0.0,
+          "dy": -0.017452406437284,
+          "dz": -0.999847695156391
+        },
+        "is_through": false,
+        "cylinders": [
+          {
+            "feature_id": "cyl_80",
+            "diameter": 0.173,
+            "radius": 0.0865,
+            "depth": null,
+            "center": {
+              "x": -2.8,
+              "y": -0.294845678613307,
+              "z": 11.757646634523462
+            },
+            "axis": {
+              "dx": 0.0,
+              "dy": -0.017452406437284,
+              "dz": -0.999847695156391
+            },
+            "is_through": false,
+            "face_index": 6067
+          }
+        ]
+      },
+      {
+        "hole_id": "hole_49",
+        "hole_type": "simple",
+        "primary_diameter": 0.173,
+        "primary_depth": null,
+        "counterbore_diameter": null,
+        "counterbore_depth": null,
+        "center": {
+          "x": -4.050000000000001,
+          "y": -0.294845678613307,
+          "z": 11.757646634523462
+        },
+        "axis": {
+          "dx": 0.0,
+          "dy": -0.017452406437284,
+          "dz": -0.999847695156391
+        },
+        "is_through": false,
+        "cylinders": [
+          {
+            "feature_id": "cyl_81",
+            "diameter": 0.173,
+            "radius": 0.0865,
+            "depth": null,
+            "center": {
+              "x": -4.050000000000001,
+              "y": -0.294845678613307,
+              "z": 11.757646634523462
+            },
+            "axis": {
+              "dx": 0.0,
+              "dy": -0.017452406437284,
+              "dz": -0.999847695156391
+            },
+            "is_through": false,
+            "face_index": 6079
+          }
+        ]
+      },
+      {
+        "hole_id": "hole_50",
+        "hole_type": "simple",
+        "primary_diameter": 0.173,
+        "primary_depth": null,
+        "counterbore_diameter": null,
+        "counterbore_depth": null,
+        "center": {
+          "x": -4.050000000000001,
+          "y": -1.244700989011878,
+          "z": 11.774226420638882
+        },
+        "axis": {
+          "dx": 0.0,
+          "dy": -0.017452406437284,
+          "dz": -0.999847695156391
+        },
+        "is_through": false,
+        "cylinders": [
+          {
+            "feature_id": "cyl_82",
+            "diameter": 0.173,
+            "radius": 0.0865,
+            "depth": null,
+            "center": {
+              "x": -4.050000000000001,
+              "y": -1.244700989011878,
+              "z": 11.774226420638882
+            },
+            "axis": {
+              "dx": 0.0,
+              "dy": -0.017452406437284,
+              "dz": -0.999847695156391
+            },
+            "is_through": false,
+            "face_index": 6091
+          }
+        ]
+      },
+      {
+        "hole_id": "hole_51",
+        "hole_type": "simple",
+        "primary_diameter": 0.875,
+        "primary_depth": null,
+        "counterbore_diameter": null,
+        "counterbore_depth": null,
+        "center": {
+          "x": -16.00006282578681,
+          "y": -2.98,
+          "z": -1.875
+        },
+        "axis": {
+          "dx": 1.0,
+          "dy": 0.0,
+          "dz": 0.0
+        },
+        "is_through": false,
+        "cylinders": [
+          {
+            "feature_id": "cyl_83",
+            "diameter": 0.875,
+            "radius": 0.4375,
+            "depth": null,
+            "center": {
+              "x": -16.00006282578681,
+              "y": -2.98,
+              "z": -1.875
+            },
+            "axis": {
+              "dx": 1.0,
+              "dy": 0.0,
+              "dz": 0.0
+            },
+            "is_through": false,
+            "face_index": 6148
+          }
+        ]
+      },
+      {
+        "hole_id": "hole_52",
+        "hole_type": "simple",
+        "primary_diameter": 0.875,
+        "primary_depth": null,
+        "counterbore_diameter": null,
+        "counterbore_depth": null,
+        "center": {
+          "x": -16.00006282578681,
+          "y": -2.98,
+          "z": 1.875
+        },
+        "axis": {
+          "dx": 1.0,
+          "dy": 0.0,
+          "dz": 0.0
+        },
+        "is_through": false,
+        "cylinders": [
+          {
+            "feature_id": "cyl_84",
+            "diameter": 0.875,
+            "radius": 0.4375,
+            "depth": null,
+            "center": {
+              "x": -16.00006282578681,
+              "y": -2.98,
+              "z": 1.875
+            },
+            "axis": {
+              "dx": 1.0,
+              "dy": 0.0,
+              "dz": 0.0
+            },
+            "is_through": false,
+            "face_index": 6160
+          }
+        ]
+      },
+      {
+        "hole_id": "hole_53",
+        "hole_type": "simple",
+        "primary_diameter": 0.875,
+        "primary_depth": null,
+        "counterbore_diameter": null,
+        "counterbore_depth": null,
+        "center": {
+          "x": -16.00006282578681,
+          "y": -2.98,
+          "z": 0.0
+        },
+        "axis": {
+          "dx": 1.0,
+          "dy": 0.0,
+          "dz": 0.0
+        },
+        "is_through": false,
+        "cylinders": [
+          {
+            "feature_id": "cyl_85",
+            "diameter": 0.875,
+            "radius": 0.4375,
+            "depth": null,
+            "center": {
+              "x": -16.00006282578681,
+              "y": -2.98,
+              "z": 0.0
+            },
+            "axis": {
+              "dx": 1.0,
+              "dy": 0.0,
+              "dz": 0.0
+            },
+            "is_through": false,
+            "face_index": 6172
+          }
+        ]
+      },
+      {
+        "hole_id": "hole_54",
+        "hole_type": "simple",
+        "primary_diameter": 0.5938,
+        "primary_depth": null,
+        "counterbore_diameter": null,
+        "counterbore_depth": null,
+        "center": {
+          "x": 0.692913385826774,
+          "y": -3.074888188976377,
+          "z": -12.750062825786808
+        },
+        "axis": {
+          "dx": 0.0,
+          "dy": 0.0,
+          "dz": 1.0
+        },
+        "is_through": false,
+        "cylinders": [
+          {
+            "feature_id": "cyl_86",
+            "diameter": 0.5938,
+            "radius": 0.2969,
+            "depth": null,
+            "center": {
+              "x": 0.692913385826774,
+              "y": -3.074888188976377,
+              "z": -12.750062825786808
+            },
+            "axis": {
+              "dx": 0.0,
+              "dy": 0.0,
+              "dz": 1.0
+            },
+            "is_through": false,
+            "face_index": 6184
+          }
+        ]
+      },
+      {
+        "hole_id": "hole_55",
+        "hole_type": "simple",
+        "primary_diameter": 0.5938,
+        "primary_depth": null,
+        "counterbore_diameter": null,
+        "counterbore_depth": null,
+        "center": {
+          "x": 2.425196850393703,
+          "y": -3.074888188976377,
+          "z": -12.750062825786808
+        },
+        "axis": {
+          "dx": 0.0,
+          "dy": 0.0,
+          "dz": 1.0
+        },
+        "is_through": false,
+        "cylinders": [
+          {
+            "feature_id": "cyl_87",
+            "diameter": 0.5938,
+            "radius": 0.2969,
+            "depth": null,
+            "center": {
+              "x": 2.425196850393703,
+              "y": -3.074888188976377,
+              "z": -12.750062825786808
+            },
+            "axis": {
+              "dx": 0.0,
+              "dy": 0.0,
+              "dz": 1.0
+            },
+            "is_through": false,
+            "face_index": 6196
+          }
+        ]
+      },
+      {
+        "hole_id": "hole_56",
+        "hole_type": "simple",
+        "primary_diameter": 0.5938,
+        "primary_depth": null,
+        "counterbore_diameter": null,
+        "counterbore_depth": null,
+        "center": {
+          "x": 1.559055118110239,
+          "y": -3.074888188976377,
+          "z": 19.25006282578681
+        },
+        "axis": {
+          "dx": 0.0,
+          "dy": 0.0,
+          "dz": 1.0
+        },
+        "is_through": false,
+        "cylinders": [
+          {
+            "feature_id": "cyl_88",
+            "diameter": 0.5938,
+            "radius": 0.2969,
+            "depth": null,
+            "center": {
+              "x": 1.559055118110239,
+              "y": -3.074888188976377,
+              "z": 19.25006282578681
+            },
+            "axis": {
+              "dx": 0.0,
+              "dy": 0.0,
+              "dz": 1.0
+            },
+            "is_through": false,
+            "face_index": 6208
+          }
+        ]
+      },
+      {
+        "hole_id": "hole_57",
+        "hole_type": "simple",
+        "primary_diameter": 0.5938,
+        "primary_depth": null,
+        "counterbore_diameter": null,
+        "counterbore_depth": null,
+        "center": {
+          "x": 3.291338582677168,
+          "y": -3.074888188976377,
+          "z": 19.25006282578681
+        },
+        "axis": {
+          "dx": 0.0,
+          "dy": 0.0,
+          "dz": 1.0
+        },
+        "is_through": false,
+        "cylinders": [
+          {
+            "feature_id": "cyl_89",
+            "diameter": 0.5938,
+            "radius": 0.2969,
+            "depth": null,
+            "center": {
+              "x": 3.291338582677168,
+              "y": -3.074888188976377,
+              "z": 19.25006282578681
+            },
+            "axis": {
+              "dx": 0.0,
+              "dy": 0.0,
+              "dz": 1.0
+            },
+            "is_through": false,
+            "face_index": 6220
+          }
+        ]
+      },
+      {
+        "hole_id": "hole_58",
+        "hole_type": "simple",
+        "primary_diameter": 0.25,
+        "primary_depth": null,
+        "counterbore_diameter": null,
+        "counterbore_depth": null,
+        "center": {
+          "x": -4.25,
+          "y": -4.249999999999999,
+          "z": 3.25
+        },
+        "axis": {
+          "dx": 0.0,
+          "dy": 1.0,
+          "dz": 0.0
+        },
+        "is_through": false,
+        "cylinders": [
+          {
+            "feature_id": "cyl_90",
+            "diameter": 0.25,
+            "radius": 0.125,
+            "depth": null,
+            "center": {
+              "x": -4.25,
+              "y": -4.249999999999999,
+              "z": 3.25
+            },
+            "axis": {
+              "dx": 0.0,
+              "dy": 1.0,
+              "dz": 0.0
+            },
+            "is_through": false,
+            "face_index": 6715
+          }
+        ]
+      },
+      {
+        "hole_id": "hole_59",
+        "hole_type": "simple",
+        "primary_diameter": 0.25,
+        "primary_depth": null,
+        "counterbore_diameter": null,
+        "counterbore_depth": null,
+        "center": {
+          "x": -4.250000000000001,
+          "y": -4.249999999999999,
+          "z": -3.25
+        },
+        "axis": {
+          "dx": 0.0,
+          "dy": 1.0,
+          "dz": 0.0
+        },
+        "is_through": false,
+        "cylinders": [
+          {
+            "feature_id": "cyl_91",
+            "diameter": 0.25,
+            "radius": 0.125,
+            "depth": null,
+            "center": {
+              "x": -4.250000000000001,
+              "y": -4.249999999999999,
+              "z": -3.25
+            },
+            "axis": {
+              "dx": 0.0,
+              "dy": 1.0,
+              "dz": 0.0
+            },
+            "is_through": false,
+            "face_index": 6744
+          }
+        ]
+      },
+      {
+        "hole_id": "hole_60",
+        "hole_type": "simple",
+        "primary_diameter": 0.25,
+        "primary_depth": null,
+        "counterbore_diameter": null,
+        "counterbore_depth": null,
+        "center": {
+          "x": 4.249999999999999,
+          "y": -4.249999999999999,
+          "z": -3.250000000000002
+        },
+        "axis": {
+          "dx": 0.0,
+          "dy": 1.0,
+          "dz": 0.0
+        },
+        "is_through": false,
+        "cylinders": [
+          {
+            "feature_id": "cyl_92",
+            "diameter": 0.25,
+            "radius": 0.125,
+            "depth": null,
+            "center": {
+              "x": 4.249999999999999,
+              "y": -4.249999999999999,
+              "z": -3.250000000000002
+            },
+            "axis": {
+              "dx": 0.0,
+              "dy": 1.0,
+              "dz": 0.0
+            },
+            "is_through": false,
+            "face_index": 6773
+          }
+        ]
+      },
+      {
+        "hole_id": "hole_61",
+        "hole_type": "simple",
+        "primary_diameter": 0.25,
+        "primary_depth": null,
+        "counterbore_diameter": null,
+        "counterbore_depth": null,
+        "center": {
+          "x": 4.250000000000001,
+          "y": -4.249999999999999,
+          "z": 3.25
+        },
+        "axis": {
+          "dx": 0.0,
+          "dy": 1.0,
+          "dz": 0.0
+        },
+        "is_through": false,
+        "cylinders": [
+          {
+            "feature_id": "cyl_93",
+            "diameter": 0.25,
+            "radius": 0.125,
+            "depth": null,
+            "center": {
+              "x": 4.250000000000001,
+              "y": -4.249999999999999,
+              "z": 3.25
+            },
+            "axis": {
+              "dx": 0.0,
+              "dy": 1.0,
+              "dz": 0.0
+            },
+            "is_through": false,
+            "face_index": 6802
+          }
+        ]
+      },
+      {
+        "hole_id": "hole_62",
+        "hole_type": "simple",
+        "primary_diameter": 0.4375,
+        "primary_depth": null,
+        "counterbore_diameter": null,
+        "counterbore_depth": null,
+        "center": {
+          "x": -4.749999999999999,
+          "y": -4.249999999999999,
+          "z": 3.199999999999999
+        },
+        "axis": {
+          "dx": 0.0,
+          "dy": 1.0,
+          "dz": 0.0
+        },
+        "is_through": false,
+        "cylinders": [
+          {
+            "feature_id": "cyl_94",
+            "diameter": 0.4375,
+            "radius": 0.21875,
+            "depth": null,
+            "center": {
+              "x": -4.749999999999999,
+              "y": -4.249999999999999,
+              "z": 3.199999999999999
+            },
+            "axis": {
+              "dx": 0.0,
+              "dy": 1.0,
+              "dz": 0.0
+            },
+            "is_through": false,
+            "face_index": 6842
+          }
+        ]
+      },
+      {
+        "hole_id": "hole_63",
+        "hole_type": "simple",
+        "primary_diameter": 0.4375,
+        "primary_depth": null,
+        "counterbore_diameter": null,
+        "counterbore_depth": null,
+        "center": {
+          "x": -4.749999999999999,
+          "y": -4.249999999999999,
+          "z": -3.2
+        },
+        "axis": {
+          "dx": 0.0,
+          "dy": 1.0,
+          "dz": 0.0
+        },
+        "is_through": false,
+        "cylinders": [
+          {
+            "feature_id": "cyl_96",
+            "diameter": 0.4375,
+            "radius": 0.21875,
+            "depth": null,
+            "center": {
+              "x": -4.749999999999999,
+              "y": -4.249999999999999,
+              "z": -3.2
+            },
+            "axis": {
+              "dx": 0.0,
+              "dy": 1.0,
+              "dz": 0.0
+            },
+            "is_through": false,
+            "face_index": 6902
+          }
+        ]
+      },
+      {
+        "hole_id": "hole_64",
+        "hole_type": "simple",
+        "primary_diameter": 0.4375,
+        "primary_depth": null,
+        "counterbore_diameter": null,
+        "counterbore_depth": null,
+        "center": {
+          "x": 4.750000000000001,
+          "y": -4.249999999999999,
+          "z": -3.2
+        },
+        "axis": {
+          "dx": 0.0,
+          "dy": 1.0,
+          "dz": 0.0
+        },
+        "is_through": false,
+        "cylinders": [
+          {
+            "feature_id": "cyl_98",
+            "diameter": 0.4375,
+            "radius": 0.21875,
+            "depth": null,
+            "center": {
+              "x": 4.750000000000001,
+              "y": -4.249999999999999,
+              "z": -3.2
+            },
+            "axis": {
+              "dx": 0.0,
+              "dy": 1.0,
+              "dz": 0.0
+            },
+            "is_through": false,
+            "face_index": 6962
+          }
+        ]
+      },
+      {
+        "hole_id": "hole_65",
+        "hole_type": "simple",
+        "primary_diameter": 0.4375,
+        "primary_depth": null,
+        "counterbore_diameter": null,
+        "counterbore_depth": null,
+        "center": {
+          "x": 4.750000000000001,
+          "y": -4.249999999999999,
+          "z": 3.199999999999999
+        },
+        "axis": {
+          "dx": 0.0,
+          "dy": 1.0,
+          "dz": 0.0
+        },
+        "is_through": false,
+        "cylinders": [
+          {
+            "feature_id": "cyl_100",
+            "diameter": 0.4375,
+            "radius": 0.21875,
+            "depth": null,
+            "center": {
+              "x": 4.750000000000001,
+              "y": -4.249999999999999,
+              "z": 3.199999999999999
+            },
+            "axis": {
+              "dx": 0.0,
+              "dy": 1.0,
+              "dz": 0.0
+            },
+            "is_through": false,
+            "face_index": 7022
+          }
+        ]
+      }
+    ]
+  },
+  "mappings": [
+    {
+      "annotation_id": "H1",
+      "hole_ids": [
+        "hole_58",
+        "hole_59",
+        "hole_60",
+        "hole_61"
+      ],
+      "confidence": "high",
+      "confidence_score": 0.95,
+      "match_reasons": [
+        "diameter match",
+        "LLM disambiguated: The holes have a primary diameter of 0.25, which matches the annotation diameter. The count of 4 holes matches the annotation count. The hole type is simple, and there are no additional features like counterbore or threading specified in the annotation."
+      ],
+      "evidence": {
+        "page": 1,
+        "bounding_box": null,
+        "raw_text": "4X ∅.250 +.003 -.001\n⏥.30 ±.02\n⭧∅.023⭨.150 D B C",
+        "view_reference": null
+      },
+      "parsed_interpretation": {
+        "hole_type": "simple",
+        "diameter": 0.25,
+        "count": 4,
+        "position_tolerance": 0.02,
+        "datum_refs": [
+          "D",
+          "B",
+          "C"
+        ],
+        "diameter_tolerance_plus": 0.003,
+        "diameter_tolerance_minus": -0.001
+      }
+    },
+    {
+      "annotation_id": "H2",
+      "hole_ids": [
+        "hole_58",
+        "hole_59",
+        "hole_60",
+        "hole_61"
+      ],
+      "confidence": "high",
+      "confidence_score": 0.95,
+      "match_reasons": [
+        "diameter match",
+        "LLM disambiguated: The holes have a primary diameter of 0.25 which matches the annotation diameter. The hole type is simple and there are exactly 4 holes with this diameter, which matches the count of 2 pairs (2X) in the annotation. The positional tolerance and datum references are not directly verifiable from the provided data, but the diameter and count match strongly suggest these are the correct holes."
+      ],
+      "evidence": {
+        "page": 1,
+        "bounding_box": null,
+        "raw_text": "2X ∅.250 +.003 -.000\n⏥.30 ±.02\n⭧∅.023⭨.425 A B C",
+        "view_reference": null
+      },
+      "parsed_interpretation": {
+        "hole_type": "simple",
+        "diameter": 0.25,
+        "count": 2,
+        "position_tolerance": 0.02,
+        "datum_refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "diameter_tolerance_plus": 0.003,
+        "diameter_tolerance_minus": -0.0
+      }
+    },
+    {
+      "annotation_id": "H3",
+      "hole_ids": [
+        "hole_58",
+        "hole_59",
+        "hole_60",
+        "hole_61"
+      ],
+      "confidence": "high",
+      "confidence_score": 0.95,
+      "match_reasons": [
+        "diameter match",
+        "LLM disambiguated: The holes have a primary diameter of 0.25, which matches the annotation diameter of 0.25 with the given tolerance. The hole type is simple, and there are four holes matching the count of 1 in the annotation, indicating a possible pattern or array of holes. The axis orientation and center positions suggest these holes are likely part of a symmetrical pattern, which aligns with the typical use of a single annotation to describe multiple identical features."
+      ],
+      "evidence": {
+        "page": 1,
+        "bounding_box": null,
+        "raw_text": "∅.250 +.003 -.000 0.015 A",
+        "view_reference": null
+      },
+      "parsed_interpretation": {
+        "hole_type": "simple",
+        "diameter": 0.25,
+        "count": 1,
+        "position_tolerance": 0.015,
+        "datum_refs": [
+          "A"
+        ],
+        "diameter_tolerance_plus": 0.003,
+        "diameter_tolerance_minus": -0.0
+      }
+    },
+    {
+      "annotation_id": "H4",
+      "hole_ids": [],
+      "confidence": "low",
+      "confidence_score": 0.35,
+      "match_reasons": [],
+      "evidence": {
+        "page": 2,
+        "bounding_box": null,
+        "raw_text": "4X Ø.281 +.006 -.001 0.06 M EBC",
+        "view_reference": null
+      },
+      "parsed_interpretation": {
+        "hole_type": "simple",
+        "diameter": 0.281,
+        "count": 4,
+        "position_tolerance": 0.06,
+        "datum_refs": [
+          "M",
+          "E",
+          "B",
+          "C"
+        ],
+        "diameter_tolerance_plus": 0.006,
+        "diameter_tolerance_minus": 0.001
+      }
+    },
+    {
+      "annotation_id": "H5",
+      "hole_ids": [],
+      "confidence": "low",
+      "confidence_score": 0.35,
+      "match_reasons": [
+        "diameter match",
+        "LLM disambiguated: None of the candidate holes match the counterbore type specified in the annotation. All candidate holes are of simple type without counterbore features."
+      ],
+      "evidence": {
+        "page": 2,
+        "bounding_box": null,
+        "raw_text": "Ø.438 ±.010 Ø.30 ±.02 0.02 A",
+        "view_reference": null
+      },
+      "parsed_interpretation": {
+        "hole_type": "counterbore",
+        "diameter": 0.438,
+        "count": 1,
+        "counterbore_diameter": 0.3,
+        "position_tolerance": 0.02,
+        "datum_refs": [
+          "A"
+        ],
+        "diameter_tolerance_plus": 0.01,
+        "diameter_tolerance_minus": 0.01
+      }
+    },
+    {
+      "annotation_id": "H6",
+      "hole_ids": [
+        "hole_54",
+        "hole_55"
+      ],
+      "confidence": "high",
+      "confidence_score": 0.95,
+      "match_reasons": [
+        "diameter match",
+        "LLM disambiguated: The diameters of holes 54 and 55 (0.5938) are within the tolerance range specified in the annotation (0.592 to 0.606). The hole type is simple, matching the annotation. The count of 2 matches the annotation, and the positional context suggests these are the correct holes."
+      ],
+      "evidence": {
+        "page": 3,
+        "bounding_box": null,
+        "raw_text": "2X Ø.594 +.012 -.002 0.040M Ø.045 MAX A B C",
+        "view_reference": null
+      },
+      "parsed_interpretation": {
+        "hole_type": "simple",
+        "diameter": 0.594,
+        "count": 2,
+        "position_tolerance": 0.045,
+        "datum_refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "diameter_tolerance_plus": 0.012,
+        "diameter_tolerance_minus": 0.002
+      }
+    },
+    {
+      "annotation_id": "H7",
+      "hole_ids": [
+        "hole_47",
+        "hole_48",
+        "hole_49",
+        "hole_50"
+      ],
+      "confidence": "high",
+      "confidence_score": 0.95,
+      "match_reasons": [
+        "diameter match"
+      ],
+      "evidence": {
+        "page": 2,
+        "bounding_box": null,
+        "raw_text": "4X ∅.173 +.005 -.000 0.060 A B C",
+        "view_reference": null
+      },
+      "parsed_interpretation": {
+        "hole_type": "simple",
+        "diameter": 0.173,
+        "count": 4,
+        "position_tolerance": 0.06,
+        "datum_refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "diameter_tolerance_plus": 0.005,
+        "diameter_tolerance_minus": 0.0
+      }
+    },
+    {
+      "annotation_id": "H8",
+      "hole_ids": [
+        "hole_51",
+        "hole_52",
+        "hole_53"
+      ],
+      "confidence": "high",
+      "confidence_score": 0.95,
+      "match_reasons": [
+        "diameter match"
+      ],
+      "evidence": {
+        "page": 2,
+        "bounding_box": null,
+        "raw_text": "3X ∅.875 ±.020 ST 3X ∅.875 ±.010 0.050 ST A B C",
+        "view_reference": null
+      },
+      "parsed_interpretation": {
+        "hole_type": "simple",
+        "diameter": 0.875,
+        "count": 3,
+        "position_tolerance": 0.05,
+        "datum_refs": [
+          "A",
+          "B",
+          "C"
+        ],
+        "diameter_tolerance_plus": 0.02,
+        "diameter_tolerance_minus": 0.01
+      }
+    },
+    {
+      "annotation_id": "H9",
+      "hole_ids": [
+        "hole_62",
+        "hole_63",
+        "hole_64",
+        "hole_65"
+      ],
+      "confidence": "high",
+      "confidence_score": 0.95,
+      "match_reasons": [
+        "diameter match",
+        "LLM disambiguated: All candidate holes match the diameter specification (0.4375 is within the tolerance of 0.438 ± 0.01), hole type (simple), and the count (4 holes match the count of 1 in the annotation). The positional tolerance and datum references are not directly verifiable from the provided data, but the overall match is strong based on the available information."
+      ],
+      "evidence": {
+        "page": 2,
+        "bounding_box": null,
+        "raw_text": "∅.438 ±.010 ∇.30 ±.02 E B C",
+        "view_reference": null
+      },
+      "parsed_interpretation": {
+        "hole_type": "simple",
+        "diameter": 0.438,
+        "count": 1,
+        "position_tolerance": 0.3,
+        "datum_refs": [
+          "E",
+          "B",
+          "C"
+        ],
+        "diameter_tolerance_plus": 0.01,
+        "diameter_tolerance_minus": -0.01
+      }
+    }
+  ],
+  "unmapped_annotations": [],
+  "unmapped_holes": [
+    "hole_0",
+    "hole_1",
+    "hole_2",
+    "hole_3",
+    "hole_4",
+    "hole_5",
+    "hole_6",
+    "hole_7",
+    "hole_8",
+    "hole_9",
+    "hole_10",
+    "hole_11",
+    "hole_12",
+    "hole_13",
+    "hole_14",
+    "hole_15",
+    "hole_16",
+    "hole_17",
+    "hole_18",
+    "hole_19",
+    "hole_20",
+    "hole_21",
+    "hole_22",
+    "hole_23",
+    "hole_24",
+    "hole_25",
+    "hole_26",
+    "hole_27",
+    "hole_28",
+    "hole_29",
+    "hole_30",
+    "hole_31",
+    "hole_32",
+    "hole_33",
+    "hole_34",
+    "hole_35",
+    "hole_36",
+    "hole_37",
+    "hole_38",
+    "hole_39",
+    "hole_40",
+    "hole_41",
+    "hole_42",
+    "hole_43",
+    "hole_44",
+    "hole_45",
+    "hole_46",
+    "hole_56",
+    "hole_57"
+  ]
+}
