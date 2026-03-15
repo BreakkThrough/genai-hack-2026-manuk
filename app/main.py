@@ -156,7 +156,7 @@ def _sidebar() -> tuple[Path | None, Path | None, str, str]:
     st.sidebar.markdown("---")
     model = st.sidebar.selectbox(
         "Vision Model",
-        ["gpt-4o", "o4-mini"],
+        ["gpt-4o"],
         help="Azure OpenAI deployment for hole extraction",
     )
     st.sidebar.markdown(f"**Units:** {unit}")
