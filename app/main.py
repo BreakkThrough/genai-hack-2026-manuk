@@ -461,7 +461,10 @@ def _render_drawing(images: list[Image.Image], linkage: LinkageResult):
         st.info("No drawing images available.")
         return
 
-    page_idx = st.slider("Page", 1, len(images), 1, key="draw_page") - 1
+    if len(images) > 1:
+        page_idx = st.slider("Page", 1, len(images), 1, key="draw_page") - 1
+    else:
+        page_idx = 0
     st.image(images[page_idx], caption=f"Page {page_idx + 1}", width="stretch")
 
     page_anns = [a for a in linkage.annotations.annotations if a.page == page_idx + 1]

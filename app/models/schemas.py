@@ -176,10 +176,20 @@ class FeatureMapping(BaseModel):
     """Links one drawing annotation to one or more 3D hole features."""
     annotation_id: str
     hole_ids: list[str] = Field(default_factory=list)
+    matched_cylinder_ids: list[str] = Field(
+        default_factory=list,
+        description="Specific cylinder feature IDs within the matched holes "
+        "that the annotation diameter matched against"
+    )
     confidence: MatchConfidence = MatchConfidence.MEDIUM
     confidence_score: float = Field(
         default=0.5, ge=0, le=1,
         description="Numeric confidence 0-1 (1 = certain match)"
+    )
+    diameter_delta: Optional[float] = Field(
+        None,
+        description="Absolute difference between annotation diameter and "
+        "best-matched cylinder diameter (drawing units)"
     )
     match_reasons: list[str] = Field(default_factory=list)
     evidence: Optional[EvidenceTrace] = Field(
@@ -192,6 +202,21 @@ class FeatureMapping(BaseModel):
     )
 
 
+class FeatureGroup(BaseModel):
+    """All annotations that belong to a single 3D hole feature."""
+    feature_id: str = Field(..., description="hole_id from features_3d")
+    hole_type: str = Field(..., description="Type of the 3D feature")
+    annotation_ids: list[str] = Field(
+        default_factory=list,
+        description="Annotation IDs that mapped to this feature"
+    )
+    matched_cylinder_ids: list[str] = Field(
+        default_factory=list,
+        description="Cylinder IDs within this feature that were matched"
+    )
+    confidence: MatchConfidence = MatchConfidence.MEDIUM
+
+
 class LinkageResult(BaseModel):
     """Complete output of the pipeline: annotations, 3D features, and mappings."""
     drawing_pdf: str
@@ -199,5 +224,9 @@ class LinkageResult(BaseModel):
     annotations: DrawingAnnotations
     features_3d: StepFeatures
     mappings: list[FeatureMapping] = Field(default_factory=list)
+    feature_groups: list[FeatureGroup] = Field(
+        default_factory=list,
+        description="Grouped view: all annotations belonging to each 3D feature"
+    )
     unmapped_annotations: list[str] = Field(default_factory=list)
     unmapped_holes: list[str] = Field(default_factory=list)

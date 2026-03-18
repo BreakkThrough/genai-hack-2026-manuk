@@ -120,7 +120,7 @@ def _format_ocr_hints(ocr_hits: list[OCRDiameterHit]) -> str:
 # Model-aware API parameter helpers
 # ---------------------------------------------------------------------------
 
-_O_SERIES_PREFIXES = ("o1", "o3", "o4")
+_O_SERIES_PREFIXES = ("o1", "o3", "o4", "gpt-5.4")
 
 
 def _is_reasoning_model(deployment: str) -> bool:
