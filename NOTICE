@@ -1,0 +1,22 @@
+Project: AI-driven Manufacturing Drawing to 3D Mapping System
+
+Author: Manoj V, Preethi K.M
+Year: 2026
+
+Purpose:
+This repository was developed as part of a hackathon to demonstrate an AI-based approach 
+for extracting Product Manufacturing Information (PMI) from 2D technical drawings and 
+mapping it to 3D CAD models.
+
+Scope & Limitations:
+- This is a prototype and may not cover all real-world manufacturing scenarios
+- Some components may be simplified, mocked, or experimental
+- Accuracy and completeness are not guaranteed
+
+License:
+This project is licensed under the Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0).
+
+Restrictions:
+- Commercial use of this project or any derived work is strictly prohibited
+- Proper attribution to the author is required for any reuse
+- The project is shared publicly for evaluation and educational purposes only

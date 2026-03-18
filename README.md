@@ -435,4 +435,11 @@ Explicitly detect drawing views (SECTION A-A, DETAIL B, etc.) from the OCR text 
 - **Reliability** — Low-confidence matches are explicitly flagged. Unmapped annotations and unmapped 3D holes are reported separately rather than suppressed.
 - **Responsible model use** — Azure OpenAI usage complies with Microsoft's Responsible AI policies. No data is sent to third-party services outside your Azure subscription.
 - **Data protection** — No personal data is processed. Drawing metadata (title blocks) is used only for annotation extraction.
-- **Licensing** — This project is MIT-licensed. All dependencies use permissive open-source licenses (see table above). Note: PyMuPDF uses AGPL-3.0; for commercial use, a [commercial license](https://pymupdf.readthedocs.io/en/latest/about.html#license) is available.
+
+## 📜 License & Usage
+
+This project is licensed under the Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0).
+
+⚠️ You are free to use and modify this code for **non-commercial purposes only** with proper attribution.
+
+Commercial usage is strictly prohibited without explicit permission.
